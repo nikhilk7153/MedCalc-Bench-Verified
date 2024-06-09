@@ -216,6 +216,7 @@ if __name__ == "__main__":
         elif prompt_style == "direct_answer":
             system, user = direct_answer(patient_note, question)
 
+
         response = client.chat.completions.create(
             model=model_name,
             messages=   [{"role": "system", "content": system}, {"role": "user", "content": user}],
@@ -230,10 +231,11 @@ if __name__ == "__main__":
         responses["Patient Note"].append(patient_note)
         responses["Question"].append(question)
 
-
-        responses["LLM Answer"].append(question)
+        responses["LLM Answer"].append()
         responses["LLM Explanation"].append(question)
         responses["Ground Truth Answer"].append(ground_truth_answer)
+
+
         
 
     with open(output_path, "w") as file:

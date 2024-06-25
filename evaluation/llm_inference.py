@@ -17,10 +17,9 @@ from transformers import StoppingCriteria, StoppingCriteriaList
 import tiktoken
 import openai
 import sys
-import google.generativeai as genai
 
 
-class ExecuteLLM:
+class LLMInference:
 
     def __init__(self, llm_name="OpenAI/gpt-3.5-turbo", cache_dir="../../huggingface/hub"):
         self.llm_name = llm_name
@@ -36,21 +35,7 @@ class ExecuteLLM:
                 api_version="2024-03-01-preview",
                 azure_endpoint=os.getenv("OPENAI_ENDPOINT"),
                 api_key=os.getenv("OPENAI_API_KEY"),
-            )
-        elif "gemini" in self.llm_name.lower():
-            genai.configure(api_key=os.environ['GOOGLE_API_KEY'])
-            self.model = genai.GenerativeModel(
-                model_name=self.llm_name,
-                generation_config={
-                    "temperature": 0,
-                    "max_output_tokens": 2048,
-                }
-            )
-            if "1.5" in self.llm_name.lower():
-                self.max_length = 1048576
-            else:
-                self.max_length = 30720
-            self.tokenizer = tiktoken.get_encoding("cl100k_base")            
+            )     
         else:
             self.type = torch.bfloat16
             self.tokenizer = AutoTokenizer.from_pretrained(self.llm_name, cache_dir=self.cache_dir)

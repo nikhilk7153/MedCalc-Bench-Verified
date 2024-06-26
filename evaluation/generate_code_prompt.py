@@ -156,12 +156,12 @@ if __name__ == "__main__":
         gpt_model = "gpt-4"
         model_name = "gpt_4"
     elif gpt_model == "35":
-        gpt_model = "gpt-35-turbo-16k"
+        gpt_model = "gpt-3.5-turbo-16k"
         model_name = "gpt_35_16k"
 
     evaluations = {}
 
-    df = pd.read_csv("dataset/test_data.csv")
+    df = pd.read_csv("../dataset/test_data.csv")
 
     output_path = f"code_exec_{model_name}.json" 
 

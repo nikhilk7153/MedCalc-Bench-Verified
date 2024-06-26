@@ -7,6 +7,9 @@ import pandas as pd
 categories = ['lab test', 'physical', 'date', 'dosage', 'risk', 'severity', 'diagnosis']
 
 def check_correctness(answer: str, ground_truth, calid, upper_limit, lower_limit):
+
+    calid = int(calid)
+
     if calid in [13, 68]:
         # Output Type: date
         if answer == ground_truth:

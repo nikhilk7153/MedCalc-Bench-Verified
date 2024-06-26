@@ -18,6 +18,8 @@ import tiktoken
 import openai
 import sys
 
+openai.api_key = os.getenv("OPENAI_API_KEY") 
+
 
 class LLMInference:
 
@@ -27,15 +29,10 @@ class LLMInference:
         if self.llm_name.split('/')[0].lower() == "openai":
             self.model = self.llm_name.split('/')[-1]
             if "gpt-3.5" in self.model or "gpt-35" in self.model:
-                self.max_length = 16384
+                self.max_length = 4096
             elif "gpt-4" in self.model:
-                self.max_length = 32768
+                self.max_length = 8192
             self.tokenizer = tiktoken.get_encoding("cl100k_base")
-            self.client = openai.AzureOpenAI(
-                api_version="2024-03-01-preview",
-                azure_endpoint=os.getenv("OPENAI_ENDPOINT"),
-                api_key=os.getenv("OPENAI_API_KEY"),
-            )     
         else:
             self.type = torch.bfloat16
             self.tokenizer = AutoTokenizer.from_pretrained(self.llm_name, cache_dir=self.cache_dir)
@@ -53,8 +50,6 @@ class LLMInference:
             elif "pmc_llama" in llm_name.lower():
                 self.tokenizer.chat_template = open('./templates/pmc_llama.jinja').read().replace('    ', '').replace('\n', '')
                 self.max_length = 2048
-            elif "command-r" in llm_name.lower():
-                self.max_length = 131072
             self.model = transformers.pipeline(
                 "text-generation",
                 model=self.llm_name,
@@ -80,16 +75,13 @@ class LLMInference:
         generate response given messages
         '''
         if "openai" in self.llm_name.lower():
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=messages,
-                temperature=0.0,
+            response = openai.ChatCompletion.create(
+                    model=self.model,
+                    messages=messages
             )
+
             ans = response.choices[0].message.content
 
-        elif "gemini" in self.llm_name.lower():
-            response = self.model.generate_content(messages[0]["content"] + '\n\n' + messages[1]["content"])
-            ans = response.candidates[0].content.parts[0].text
         else:
             stopping_criteria = None
             if prompt is None:
@@ -120,6 +112,7 @@ class LLMInference:
                 )
             ans = response[0]["generated_text"]
         return ans
+
 
 class CustomStoppingCriteria(StoppingCriteria):
     def __init__(self, stop_words, tokenizer, input_len=0):

@@ -1,6 +1,7 @@
 name: medcalc-bench-final
 channels:
   - defaults
+  - pytorch
 dependencies:
   - bzip2=1.0.8=h6c40b1e_5
   - ca-certificates=2024.3.11=hecd8cb5_0
@@ -15,6 +16,8 @@ dependencies:
   - tk=8.6.12=h5d9f67b_0
   - xz=5.4.6=h6c40b1e_0
   - zlib=1.2.13=h4dc903c_0
+  - pip=23.3.1
+  - pytorch==2.3.0
   - pip:
     - aiofiles==23.2.1
     - aiohttp==3.9.5
@@ -157,6 +160,7 @@ dependencies:
     - tornado==6.4
     - tqdm==4.66.2
     - traitlets==5.14.3
+    - transformers==4.30.0
     - txt2tags==3.9
     - typer==0.12.3
     - types-python-dateutil==2.9.0.20240316

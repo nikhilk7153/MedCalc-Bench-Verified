@@ -81,6 +81,8 @@ Each instance in the jsonl will have the following meta-data associated with the
 }
 ```
 
+Additionally, we provide the mean accuracy and standard deviation percentage for each sub-category in a json titled ```results_<model>_<prompt_style>.json```. The cumulative accuracy and standard deviation among all 1,047 instances can be found under "overall" key of the JSON. 
+
 ## Reproducing Code Interpreter Results
 
 In addition to the results for Table 2 in the main paper, we also prompted LLMs to write code to perform arithmetic instead of having the LLM do this itself. Due to limited compute, we only ran the results for GPT-3.5 and GPT-4. To examine the prompts and run under this setting, please examine the ```generate_code_prompt.py``` file in the ```evaluation``` folder. 
@@ -92,7 +94,6 @@ You can then obtain the accuracy by running ```python compute_score_code_prompt.
 ## Acknowledgments and Disclosure of Funding
 
 This research was supported by the NIH Intramural Research Program, National Library of Medicine. Additionally, the contributions made by Soren Dunn were done using the Delta advanced computing and data resource which is supported by the National Science Foundation (award OAC tel:2005572) and the State of Illinois. Delta is a joint effort of the University of Illinois Urbana-Champaign (UIUC) and its National Center for Supercomputing Applications (NCSA).
-
 
 ## Ethics Statement
 For curating the patient notes in MedCalc-Bench, we only use publicly available patient notes from published case report articles in PubMed Central and clinician-generated anonymous patient vignettes. As such, no identifiable personal health information is revealed in this study. While MedCalc-Bench is designed to evaluate the medical calculation capabilities of LLMs, it should be noted that the dataset is not intended for direct diagnostic use or medical decision-making

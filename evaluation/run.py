@@ -151,7 +151,7 @@ if __name__ == "__main__":
     model_name = args.model
     prompt_style = args.prompt
 
-    output_path = f"{model_name.replace('/', '_')}_{prompt_style}.json"
+    output_path = f"{model_name.replace('/', '_')}_{prompt_style}.jsonl"
 
     if not os.path.exists("outputs"):
         os.makedirs("outputs")
@@ -271,12 +271,9 @@ if __name__ == "__main__":
 
     category_accuracy = {}
 
-
     with open(f"outputs/{output_path}", "r") as file:
-        for line in file:
-            dict_ = json.loads(line)
-            
-            category  = c[]
+        predictions = json.load(file)
+
 
 
         

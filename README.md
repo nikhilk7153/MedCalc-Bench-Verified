@@ -58,9 +58,9 @@ The options for `--prompt` are below:
 - Zero Shot Chain of Thought: zero_shot
 - One Shot Chain of Though: one_shot_cot
 
-From this, you will get one JSON outputting the status of every question: Upon executing `run.py`, the results will be saved in a file called ```<model>_<prompt>.json```. 
+From this, you will get one jsonl file outputting the status of every question: Upon executing `run.py`, the results will be saved in a file called ```<model>_<prompt>.jsonl```. 
 
-Each instance in the JSON will have the following meta-data associated with them:
+Each instance in the jsonl will have the following meta-data associated with them:
 
 <br>
 

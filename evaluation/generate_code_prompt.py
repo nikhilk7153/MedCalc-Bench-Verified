@@ -245,6 +245,5 @@ if __name__ == "__main__":
         with open(f"{output_path}", "a") as f:
             f.write(outputs + "\n")
 
-
         compute_overall_accuracy(output_path, model_name, "code_augmented")
 

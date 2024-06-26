@@ -206,7 +206,6 @@ if __name__ == "__main__":
         with open(f"code_exec_{model_name}.json", "w") as file:
             json.dump(results, file, indent=4)
 
-    
     with open(f"code_exec_{model_name}.json", "w") as file:
         json.dump(results, file, indent=4)
     

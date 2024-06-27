@@ -54,3 +54,4 @@ def compute_overall_accuracy(output_path, model_name, prompt_style):
         json.dump(category_stats, file, indent=4)
 
     return category_stats
+

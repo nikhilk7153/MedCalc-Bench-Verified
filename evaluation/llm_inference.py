@@ -17,6 +17,9 @@ from transformers import StoppingCriteria, StoppingCriteriaList
 import tiktoken
 import openai
 import sys
+from huggingface_hub import login
+
+login(token=os.getenv("HUGGINGFACE_TOKEN"))
 
 openai.api_key = os.getenv("OPENAI_API_KEY") 
 

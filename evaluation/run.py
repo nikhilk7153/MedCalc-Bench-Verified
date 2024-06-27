@@ -11,7 +11,7 @@ import math
 import numpy as np
 import ast
 from table_stats import compute_overall_accuracy
-from huggingface_hub import login 
+from huggingface_hub import login
 
 login(token=os.getenv("HUGGINGFACE_TOKEN"))
 
@@ -56,12 +56,16 @@ def extract_answer(answer, calid):
 
     calid = int(calid)
     extracted_answer = re.findall(r'[Aa]nswer":\s*(.*?)\}', answer)
-    
-    try:
-        dict_ = ast.literal_eval(answer)
-        explanation = dict_["step_by_step_thinking"]
-    except:
+    matches = re.findall(r'"step_by_step_thinking":\s*"([^"]+)"\s*,\s*"[Aa]nswer"', answer)
+
+
+    if matches:
+    # Select the last match
+        last_match = matches[-1]
+        explanation = last_match    
+    else:
         explanation = "No Explanation"
+
 
     if len(extracted_answer) == 0:
         extracted_answer = "Not Found"

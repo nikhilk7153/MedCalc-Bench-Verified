@@ -3,6 +3,8 @@ import os
 import argparse
 import numpy as np
 import pandas as pd
+from datetime import datetime
+
 
 categories = ['lab test', 'physical', 'date', 'dosage', 'risk', 'severity', 'diagnosis']
 
@@ -12,7 +14,8 @@ def check_correctness(answer: str, ground_truth, calid, upper_limit, lower_limit
 
     if calid in [13, 68]:
         # Output Type: date
-        if answer == ground_truth:
+
+        if datetime.strptime(answer, "%m/%d/%Y").strftime("%-m/%-d/%Y") == datetime.strptime(ground_truth, "%m/%d/%Y").strftime("%-m/%-d/%Y"):
             correctness = 1
         else:
             correctness = 0

@@ -683,7 +683,7 @@
         "Last menstrual date": "menstrual_date",
         "file path": "estimated_conception_date.py",
         "explanation function": "add_2_weeks_explanation",
-        "calculator name": "Estimated of Conception",
+        "calculator name": "Estimated Date of Conception",
         "type": "date",
         "question": "Based on the patient's last menstrual period, what is the the patient's estimated date of conception? Your answer should be in the format of M/D/Y (ie 08/31/2023, 07/03/2000) with just the date and not other text."
     },

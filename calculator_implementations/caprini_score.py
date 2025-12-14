@@ -49,7 +49,7 @@ def caprini_score_explanation(input_parameters):
 4. Venous disease or clotting disorder: Varicose veins = +1 point, Current swollen legs = +1 point, Current central venous access = +2 points, History of deep vein thrombosis (DVT) or pulmonary embolism (PE) = +3 points, Family history of thrombosis = +3 points, Positive Factor V Leiden = +3 points, Positive prothrombin 20210A = +3 points, Elevated serum homocysteine = +3 points
 5. Other congenital or acquired thrombophilia: Positive lupus anticoagulant = +3 points, Elevated anticardiolipin antibody = +3 points, Heparin-induced thrombocytopenia = +3 points
 6. Mobility: Normal, out of bed = 0 points, Medical patient currently on bed rest = +1 point, Patient confined to bed >72 hours = +2 points
-7. Other present and past history: History of inflammatory bowel disease = +1 point, BMI ≥25 = +1 point, Acute myocardial infarction = +1 point, Chronic obstructive pulmonary disease (COPD) = +1 point, Present or previous malignancy = +2 points
+7. Other present and past history: History of inflammatory bowel disease = +1 point, BMI ≥25 = +2 points, Acute myocardial infarction = +1 point, Chronic obstructive pulmonary disease (COPD) = +1 point, Present or previous malignancy = +2 points
 
 The total Caprini Score is calculated by summing the points for each criterion.
     """

@@ -97,6 +97,6 @@ For any changes to this dataset, (i.e. adding new notes, calculators, modifying 
 
 ## License 
 
-MedCalc-Bench is released under the CC-BY-SA 4.0 license. 
+MedCalc-Bench-Verified is released under the CC-BY-SA 4.0 license. 
 
 

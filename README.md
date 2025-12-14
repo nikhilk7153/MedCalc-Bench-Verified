@@ -39,7 +39,7 @@ Each Instance in the dataset contains the following information:
 To install all the packages needed for this project, please run the following command: ```conda env create -f environment.yml```. This command will create the ```medcalc-bench``` conda environment. For running OpenAI models, you will need to provide your OpenAI key in this conda environment. You can do this by executing the following command in the ```medcalc-bench``` environment: ```export OPENAI_API_KEY = YOUR_API_KEY```, where YOUR_API_KEY is your OpenAI API key. You will also need to provide your HuggingFace token in this environment by running the following command: ```export HUGGINGFACE_TOKEN=your_hugging_face_token```, where ```your_hugging_face_token``` is your huggingface token. 
 
 
-For reproducing the Table 2 from the paper, first `cd` into the `evaluation` folder. Then, please run the following command: ```python run.py --model <model_name> and --prompt <prompt_style>```.
+For reproducing the Table 2 from the original paper, first `cd` into the `evaluation` folder. Then, please run the following command: ```python run.py --model <model_name> and --prompt <prompt_style>```.
 
 The options for `--model` are below:
 
@@ -85,7 +85,7 @@ Additionally, we provide the mean accuracy and standard deviation percentage for
 
 ## Reproducing Code Interpreter Results
 
-In addition to the results for Table 2 in the main paper, we also prompted LLMs to write code to perform arithmetic instead of having the LLM do this itself. The results for this can be found in Appendix D. Due to limited compute, we only ran the results for GPT-3.5 and GPT-4. To examine the prompts and run under this setting, please examine the ```generate_code_prompt.py``` file in the ```evaluation``` folder. 
+In addition to the results for Table 2 in the original MedCalc-Bench paper, we also prompted LLMs to write code to perform arithmetic instead of having the LLM do this itself. The results for this can be found in Appendix D. Due to limited compute, we only ran the results for GPT-3.5 and GPT-4. To examine the prompts and run under this setting, please examine the ```generate_code_prompt.py``` file in the ```evaluation``` folder. 
 
 To run this code, simply `cd` into the ```evaluations``` folder and run the following: ```python generate_code_prompt.py --gpt <gpt_model>```. The options for ```<gpt_model>``` are either `4` for running GPT-4 or `35` to run GPT-3.5-turbo-16k. The results will then get saved in a jsonl file named: ```code_exec_{model_name}.jsonl``` in the  ```outputs``` folder. Note that in this case, ```model_name``` will be ```gpt_4``` if you chose to run using GPT-4. Otherwise, ```model_name``` will be ```gpt_35_16k``` if you selected to run with GPT-3.5-turbo. 
 

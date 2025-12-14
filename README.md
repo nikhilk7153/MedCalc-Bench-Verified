@@ -1,7 +1,7 @@
 
 # Updates
 
-Updates to MedCalc-Bench-v1.2 will be made on this page going forward. 
+Updates to MedCalc-Bench-v1.2 will be made on this page going forward. Here is the HuggingFace: https://huggingface.co/datasets/nsk7153/MedCalc-Bench-Verified
 
 # MedCalc-Bench
 
@@ -14,7 +14,7 @@ Updates to MedCalc-Bench-v1.2 will be made on this page going forward.
 <br>
 
 
-MedCalc-Bench is the first medical calculation dataset used to benchmark LLMs ability to serve as clinical calculators. Each instance in the dataset consists of a patient note, a question asking to compute a specific clinical value, a final answer value, and a step-by-step solution explaining how the final answer was obtained. Our dataset covers 55 different calculation tasks which are either rule-based calculations or are equation-based calculations. This dataset contains a training dataset of 10,543 instances and a testing dataset of 1,100 instances.
+MedCalc-Bench Verified is a re-verified version of MedCalc-Bench used to benchmark LLMs ability to serve as clinical calculators. Each instance in the dataset consists of a patient note, a question asking to compute a specific clinical value, a final answer value, and a step-by-step solution explaining how the final answer was obtained. Our dataset covers 55 different calculation tasks which are either rule-based calculations or are equation-based calculations. This dataset contains a training dataset of 10,543 instances and a testing dataset of 1,100 instances.
  <br>
 
 In all, we hope that our dataset and benchmark serves as a call to improve the computational reasoning skills of LLMs in medical settings. 
@@ -99,45 +99,13 @@ To run this code, simply `cd` into the ```evaluations``` folder and run the foll
 The metadata for each instance in the jsonl file for the code interprepter results is the same instance info provided in the section above. The only difference is that we store the LLM chat history between the user and the assistant and have a "LLM Chat History" key instead of the "LLM Explanation" key. Additionally, the sub-category and overall accuracy are stored in a JSON file named 
 ```results_<model_name>_code_augmented.json```. This JSON is located in the ```results``` folder. 
 
-## Acknowledgments and Disclosure of Funding
-
-This research was supported by the NIH Intramural Research Program, National Library of Medicine. Additionally, the contributions made by Soren Dunn were done using the Delta advanced computing and data resource which is supported by the National Science Foundation (award OAC tel:2005572) and the State of Illinois. Delta is a joint effort of the University of Illinois Urbana-Champaign (UIUC) and its National Center for Supercomputing Applications (NCSA).
-
-## Ethics Statement
-
-For curating the patient notes in MedCalc-Bench, we only use publicly available patient notes from published case report articles in PubMed Central and clinician-generated anonymous patient vignettes. As such, no identifiable personal health information is revealed in this study. While MedCalc-Bench is designed to evaluate the medical calculation capabilities of LLMs, it should be noted that the dataset is not intended for direct diagnostic use or medical decision-making without review and oversight by a clinical professional. Individuals should not change their health behavior solely on the basis of our study.
-
-
-## Broader Impacts 
-
-As described in Sec 1, medical calculators are commonly used in the clinical setting. With the rapidly growing interest in using LLMs for domain-specific applications, healthcare practitioners might directly prompt chatbots like ChatGPT to perform medical calculation tasks. However, the capabilities of LLMs in these tasks are currently unknown. Since healthcare is a high-stakes domain and wrong medical calculations can lead to severe consequences, including misdiagnosis, inappropriate treatment plans, and potential harm to patients, it is crucial to thoroughly evaluate the performance of LLMs in medical calculations. It should be noted that while high scores on MedCalc-Bench do not guarantee excellence in medical calculation tasks, failing in this dataset indicates that the models must not be considered for such purposes at all. In other words, we believe that passing MedCalc-Bench should be a necessary (but not sufficient) condition for a model to be used for medical calculation
 
 ## Maintenance and Responsibility 
 
 For any changes to this dataset, (i.e. adding new notes, calculators, modifying existing ones), we will update the README instructions, test_set.csv, and train_set.csv. We will still keep older versions of these datasets as separate branches and update the versions on Github for new releases. We will also update train and test sets for HuggingFace as well. 
 
-## Disclaimer
-
-This tool shows the results of research conducted in the Computational Biology Branch, NCBI/NLM. The information produced on this website is not intended for direct diagnostic use or medical decision-making without review and oversight by a clinical professional. Individuals should not change their health behavior solely on the basis of information produced on this website. NIH does not independently verify the validity or utility of the information produced by this tool. If you have questions about the information produced on this website, please see a health care professional. More information about NCBI's disclaimer policy is available.
-
 ## License 
 
-Depending on the calculator, our dataset consists of notes that were either designed from templated-based functions implemented in Python, handwritten by clinicians, or taken from our dataset, Open-Patients. 
+MedCalc-Bench is released under the CC-BY-SA 4.0 license. 
 
-Open-Patients is an aggregated dataset of 180k patient notes coming from three different sources. We have authorization to use the dataset from all three sources. The first source is the USMLE questions from MedQA which is released under the MIT License. 
-The second source of our dataset are the Trec Clinical Decision Support and Trec Clinical Trial which are available for redistribution because they are both government-owned datasets released to the public. Lastly, PMC-Patients is released under the CC-BY-SA 4.0 license and so we have permission to incorporate PMC-Patients inside Open-Patients and MedCalc-Bench, but the dataset must be released under the same lisense. Hence, our source of notes, Open-Patients, and the dataset curated from it, MedCalc-Bench, are both released under the CC-BY-SA 4.0 license. 
 
-Based on the justification of license rules, both Open-Patients and MedCalc-Bench comply with the CC-BY-SA 4.0 license, but the authors of this paper will bear all responsibility in case of violation of rights. 
-
-## Citation
-
-```bibtex
-@misc{khandekar2024medcalcbench,
-      title={MedCalc-Bench: Evaluating Large Language Models for Medical Calculations}, 
-      author={Nikhil Khandekar and Qiao Jin and Guangzhi Xiong and Soren Dunn and Serina S Applebaum and Zain Anwar and Maame Sarfo-Gyamfi and Conrad W Safranek and Abid A Anwar and Andrew Zhang and Aidan Gilson and Maxwell B Singer and Amisha Dave and Andrew Taylor and Aidong Zhang and Qingyu Chen and Zhiyong Lu},
-      year={2024},
-      eprint={2406.12036},
-      archivePrefix={arXiv},
-      primaryClass={id='cs.CL' full_name='Computation and Language' is_active=True alt_name='cmp-lg' in_archive='cs' is_general=False description='Covers natural language processing. Roughly includes material in ACM Subject Class I.2.7. Note that work on artificial languages (programming languages, logics, formal systems) that does not explicitly address natural-language issues broadly construed (natural-language processing, computational linguistics, speech, text retrieval, etc.) is not appropriate for this area.'}
-}
-```

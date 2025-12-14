@@ -5,14 +5,6 @@ Updates to MedCalc-Bench-v1.2 will be made on this page going forward. Here is t
 
 # MedCalc-Bench
 
-<br>
-
-<div style="text-align: center;">
-  <img alt="MedCalc-Bench" src="https://github.com/ncbi-nlp/MedCalc-Bench/blob/main/instance_illustration/instance_illustration.png">
-</div>
-
-<br>
-
 
 MedCalc-Bench Verified is a re-verified version of MedCalc-Bench used to benchmark LLMs ability to serve as clinical calculators. Each instance in the dataset consists of a patient note, a question asking to compute a specific clinical value, a final answer value, and a step-by-step solution explaining how the final answer was obtained. Our dataset covers 55 different calculation tasks which are either rule-based calculations or are equation-based calculations. This dataset contains a training dataset of 10,543 instances and a testing dataset of 1,100 instances.
  <br>

@@ -11,7 +11,7 @@ def apache_ii_explanation(input_parameters):
 1. Age, years: ≤44 = 0 points, 45-54 = +2 points, 55-64 = +3 points, 65-74 = +5 points, ≥75 = +6 points
 2. History of severe organ insufficiency or immunocompromised: Yes, nonoperative or emergency postoperative patient = +5 points, Yes, elective postoperative patient = +2 points, No = 0 points
 3. Rectal temperature, °C: ≥41 = +4 points, 39 to <41 = +3 points, 38.5 to <39 = +1 point, 36 to <38.5 = 0 points, 34 to <36 = +1 point, 32 to <34 = +2 points, 30 to <32 = +3 points, <30 = +4 points
-4. Mean arterial pressure, mmHg: ≥160 = +4 points, 130-159 = +3 points, 110-129 = +2 points, 70-109 = 0 points, 50-69 = +2 points, 40-49 = +3 points, <40 = +4 points
+4. Mean arterial pressure, mmHg: ≥160 = +4 points, 130-159 = +3 points, 110-129 = +2 points, 70-109 = 0 points, 50-69 = +2 points,  <= 49 = +4 points
 5. Heart rate, beats per minute: ≥180 = +4 points, 140 to <180 = +3 points, 110 to <140 = +2 points, 70 to <110 = 0 points, 55 to <70 = +2 points, 40 to <55 = +3 points, <40 = +4 points
 6. Respiratory rate, breaths per minute: ≥50 = +4 points, 35 to <50 = +3 points, 25 to <35 = +1 point, 12 to <25 = 0 points, 10 to <12 = +1 point, 6 to <10 = +2 points, <6 = +4 points
 7. Oxygenation (use PaO₂ if FiO₂ < 50%, otherwise use A-a gradient): A-a gradient > 499 = +4 points, A-a gradient 350-499 = +3 points, A-a gradient 200-349 = +2 points, A-a gradient < 200 (if FiO₂ ≥ 50%) or PaO₂ > 70 (if FiO₂ < 50%) = 0 points, PaO₂ 61-70 = +1 point, PaO₂ 55-60 = +3 points, PaO₂ < 55 = +4 points.

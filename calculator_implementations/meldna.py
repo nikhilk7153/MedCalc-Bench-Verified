@@ -6,7 +6,7 @@ def compute_meldna_explanation(input_variables):
     
     meldna = 0
 
-    explanation = "The formula for computing the MELD Na is to first apply the following equation: MELD(i) = 0.957 x ln(Cr) + 0.378 x ln(bilirubin) + 1.120 x ln(INR) + 0.643.\n"
+    explanation = "The formula for computing the MELD Na (UNOS/OPTN) is to first apply the following equation: MELD(i) = 0.957 x ln(Cr) + 0.378 x ln(bilirubin) + 1.120 x ln(INR) + 0.643.\n"
     explanation += "If the MELD(i) is greater than 11 after rounding to the nearest tenth and multiplying the MELD(i) by 10, we apply the following equation: MELD = MELD(i) + 1.32 x (137 - Na) -  [ 0.033 x MELD(i) x (137 - Na)]. The MELD Na score is capped at 40. "
     explanation += "The concentration of Na is mEq/L, the concentration of bilirubin is mg/dL, and the concentration of creatinine is mg/dL. If the patient's Na concentration is less than 125 mEq/L, we set it to 125 mEq/L and if the patient's the Na concentration is greater 137 mEq/L, we round it to 137 mEq/L.\n"
 

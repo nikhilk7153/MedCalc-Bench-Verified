@@ -5,12 +5,12 @@ def compute_sofa_explanation(input_parameters):
 
     explanation = """The criteria for the SOFA Score are shown below:
     
-1. PaO₂/FiO₂ ratio (mm Hg): ≥400 = 0 points, 300-399 = +1 point, 200-299 = +2 points, 100-199 (with respiratory support) = +3 points, <100 (with respiratory support) = +4 points
+1. PaO₂/FiO₂ ratio (mm Hg): ≥400 = 0 points, 300-399 = +1 point, 200-299 = +2 points, < 200 and NOT mechanically ventillated = +2 points, 100-199 (with mechanical ventilation) = +3 points, <= 199, <100 (with respiratory support) = +4 points
 2. Platelets (x10³/µL): ≥150 = 0 points, 100-149 = +1 point, 50-99 = +2 points, 20-49 = +3 points, <20 = +4 points
 3. Glasgow Coma Scale (GCS): 15 = 0 points, 13-14 = +1 point, 10-12 = +2 points, 6-9 = +3 points, <6 = +4 points
 4. Bilirubin (mg/dL): <1.2 = 0 points, 1.2-1.9 = +1 point, 2.0-5.9 = +2 points, 6.0-11.9 = +3 points, ≥12.0 = +4 points
 5. Mean arterial pressure (MAP) or administration of vasopressors (in mcg): No hypotension = 0 points, MAP <70 mmHg = +1 point, Dopamine ≤5 or Dobutamine (any dose) = +2 points, Dopamine >5 or Epinephrine ≤0.1 or norepinephrine ≤0.1 = +3 points, Dopamine >15 or Epinephrine >0.1 or norepinephrine >0.1 = +4 points
-6. Creatinine (mg/dL) or urine output: <1.2 = 0 points, 1.2-1.9 = +1 point, 2.0-3.4 = +2 points, 3.5-4.9 or urine output <500 mL/day = +3 points, ≥5.0 or urine output <200 mL/day = +4 points
+6. Creatinine (mg/dL) or urine output: <1.2 = 0 points, 1.2-<2.0 = +1 point, 2.0-<3.5 = +2 points, 3.5-<5.0 or urine output <500 mL/day = +3 points, ≥5.0 or urine output <200 mL/day = +4 points
 
 The total SOFA Score is calculated by summing the points for each criterion.
     """ 
@@ -56,7 +56,7 @@ The total SOFA Score is calculated by summing the points for each criterion.
     elif 200 <= ratio < 300:
         explanation += f"Because the patient's partial pressure of oxygen to FiO₂ ratio is between 200 and 300, we increase the score by two points, makeing the current total {sofa_score} + 2 = {sofa_score + 2}.\n"
         sofa_score += 2
-    elif ratio <= 199 and (not input_parameters["mechanical_ventilation"] and not input_parameters["cpap"]):
+    elif ratio <= 199 and (("mechanical_ventillation" not in input_parameters and "cpap" not in input_parameters) or (not input_parameters["mechanical_ventilation"] and not input_parameters["cpap"])):
         explanation += f"Because the patient's partial pressure of oxygen to FiO₂ ratio is less than 200, the patient is not on mechanical ventillation and is not using continious positive airway pressure, we increase the score by two points, making the current total {sofa_score} + 2 = {sofa_score + 2}.\n"
         sofa_score += 2
     elif 100 <= ratio < 199 and (input_parameters["mechanical_ventilation"] or input_parameters["cpap"]):
@@ -135,13 +135,13 @@ The total SOFA Score is calculated by summing the points for each criterion.
     if platelet_count >= 150000:
         explanation += f"Because the patient's platelet count is at least 150*10³/µL, we do not any points to the score, keeping the current score at {sofa_score}.\n"
     if 100000 <= platelet_count < 150000:
-        explanation += f"Because the patient's platelet count is between 100*10³/µL but less than 150*10³/µL, we increment the score by one point, making the current score {sofa_score} + 1 = {sofa_score + 1}.\n"
+        explanation += f"Because the patient's platelet count is at least 100*10³/µL, but less than 150*10³/µL, we increment the score by one point, making the current score {sofa_score} + 1 = {sofa_score + 1}.\n"
         sofa_score += 1
     elif 50000 <= platelet_count < 100000:
-        explanation += f"Because the patient's platelet count is between 50*10³/µL but less than 100*10³/µL, we increment the score by two points, making the current score {sofa_score} + 2 = {sofa_score + 2}.\n"
+        explanation += f"Because the patient's platelet count is at least 50*10³/µL, but less than 100*10³/µL, we increment the score by two points, making the current score {sofa_score} + 2 = {sofa_score + 2}.\n"
         sofa_score += 2
     elif 20000 <= platelet_count < 50000:
-        explanation += f"Because the patient's platelet count is between 20*10³/µL but less than 50*10³/µL, we increment the score by three points, making the current score {sofa_score} + 3 = {sofa_score + 3}.\n"
+        explanation += f"Because the patient's platelet count is at least 20*10³/µL, but less than 50*10³/µL, we increment the score by three points, making the current score {sofa_score} + 3 = {sofa_score + 3}.\n"
         sofa_score += 3
     elif platelet_count < 20000:
         explanation += f"Because the patient's platelet count is less than 20*10³/µL, we increment the score by four points, making the current score {sofa_score} + 4 = {sofa_score + 4}.\n"
@@ -166,7 +166,7 @@ The total SOFA Score is calculated by summing the points for each criterion.
             explanation += f"For three points to be given, either the patient's creatinine clearance must be between 3.5 mg/dL or 5.0 mg/dL or the patient's urine output is less than 500 mL/day. Because at least one of these statemets is true, we increment the score by three points, making the current total {sofa_score} + 3 = {sofa_score + 3}.\n"
             sofa_score += 3
     elif 2.0 <= creatinine < 3.5:
-            explanation += f"Because the patient's creatinine concentration is at least 2.0 mg/dL but less than 3.5 mg/dL, we increment the score by two points, making the current total {sofa_score} + 2 = {sofa_score + 2}.\n"
+            explanation += f"Because the patient's creatinine concentration is at least 2.0 mg/dL, but less than 3.5 mg/dL, we increment the score by two points, making the current total {sofa_score} + 2 = {sofa_score + 2}.\n"
             sofa_score += 2
     elif 1.2 <= creatinine < 2.0:
         explanation += f"Because the patient's creatinine concentration is at least 1.2 mg/dL, but less than 2.0 mg/dL, we increment the score by one point, making the current total {sofa_score} + 1 = {sofa_score + 1}.\n"

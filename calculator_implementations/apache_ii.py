@@ -124,21 +124,21 @@ The total APACHE II score is calculated by summing the points for each criterion
         explanation += f"Because the patient's temperature is {temperature} degrees celsius or higher, 4 points are added to the score, making the current total, {score} + 4 = {score + 4}.\n"
         score += 4
     elif 39 <= temperature < 41:
-        explanation += f"Because the patient's temperature is between 39 and 41 degrees celsius, 3 points are added to the score, making the current total, {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's temperature is at least 39 degrees celsius, but less than 41 degrees celsius, 3 points are added to the score, making the current total, {score} + 3 = {score + 3}.\n"
         score += 3
     elif 38.5 <= temperature < 39:
-        explanation += f"Because the patient's temperature is between 38.5 and 39 degrees celsius, 1 point is added to the score, making the current total, {score} + 1 = {score + 1}.\n"
+        explanation += f"Because the patient's temperature is at least 38.5 degrees celsius, but less than 39 degrees celsius, 1 point is added to the score, making the current total, {score} + 1 = {score + 1}.\n"
         score += 1
     elif 36 <= temperature < 38.5:
-        explanation += f"Because the patient's temperature is between 36 and 38.5 degrees celsius, no points are added to the score, keeping the current total at {score}.\n"
+        explanation += f"Because the patient's temperature is at least 36 degrees celsius, but less than 38.5 degrees celsius, no points are added to the score, keeping the current total at {score}.\n"
     elif 34 <= temperature < 36:
-        explanation += f"Because the patient's temperature is between 34 and 36 degrees celsius, 1 point is added to the score, making the current total, {score} + 1 = {score + 1}.\n"
+        explanation += f"Because the patient's temperature is at least 34 degrees celsius, but less than 36 degrees celsius, 1 point is added to the score, making the current total, {score} + 1 = {score + 1}.\n"
         score += 1
     elif 32 <= temperature < 34:
-        explanation += f"Because the patient's temperature is between 32 and 34 degrees celsius, 2 points are added to the score, making the current total, {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's temperature is at least 32 degrees celsius, but less than 34 degrees celsius, 2 points are added to the score, making the current total, {score} + 2 = {score + 2}.\n"
         score += 2
     elif 30 <= temperature < 32:
-        explanation += f"Because the patient's temperature is between 30 and 32 degrees celsius, 3 points are added to the score, making the current total, {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's temperature is at least 30 degrees celsius, but less than 32 degrees celsius, 3 points are added to the score, making the current total, {score} + 3 = {score + 3}.\n"
         score += 3
     elif temperature < 30:
         explanation += f"Because the patient's temperature is below 30 degrees celsius, 4 points are added to the score, making the current total, {score} + 4 = {score + 4}.\n"
@@ -157,15 +157,15 @@ The total APACHE II score is calculated by summing the points for each criterion
         explanation += f"Because the patient's mean arterial pressure is above 159 mmHg, 4 points are added to the score, making the current total, {score} + 4 = {score + 4}.\n"
         score += 4
     elif 129 < map_value <= 159:
-        explanation += f"Because the patient's mean arterial pressure is between 130 and 159 mmHg, 3 points are added to the score, making the current total, {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's mean arterial pressure is at least 130 mmHg, but less than 160 mmHg, 3 points are added to the score, making the current total, {score} + 3 = {score + 3}.\n"
         score += 3
     elif 109 < map_value <= 129:
-        explanation += f"Because the patient's mean arterial pressure is between 110 and 129 mmHg, 2 points are added to the score, making the current total, {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's mean arterial pressure is at least 110 mmHg, but less than 130 mmHg, 2 points are added to the score, making the current total, {score} + 2 = {score + 2}.\n"
         score += 2
     elif 69 < map_value <= 109:
-        explanation += f"Because the patient's mean arterial pressure is between 70 and 109 mmHg, 0 points are added to the patient's score, keeping the total at {score}.\n"
+        explanation += f"Because the patient's mean arterial pressure is at least 70 mmHg, but less than 110 mmHg, 0 points are added to the patient's score, keeping the total at {score}.\n"
     elif 49 < map_value <= 69:
-        explanation += f"Because the patient's mean arterial pressure is between 50 and 69 mmHg, 2 points are added to the score, making the current total, {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's mean arterial pressure is at least 50 mmHg, but less than 70 mmHg, 2 points are added to the score, making the current total, {score} + 2 = {score + 2}.\n"
         score += 2
     elif map_value <= 49:
         explanation += f"Because the patient's mean arterial pressure is 49 mmHg or lower, 4 points are added to the score, making the current total, {score} + 4 = {score + 4}.\n"
@@ -228,18 +228,18 @@ The total APACHE II score is calculated by summing the points for each criterion
         explanation += f"Because the patient's pH is above 7.70, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
         score += 4
     elif 7.60 <= pH < 7.70:
-        explanation += f"Because the patient's pH is between 7.60 and 7.69, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's pH is at least 7.60, but less than 7.70, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
         score += 3
     elif 7.50 <= pH < 7.60:
-        explanation += f"Because the patient's pH is between 7.50 and 7.59, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
+        explanation += f"Because the patient's pH is at least 7.50, but less than 7.60, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
         score += 1
     elif 7.33 <= pH < 7.50:
-        explanation += f"Because the patient's pH is between 7.33 and 7.49, 0 points are added to the patient's score, keeping the total at {score}.\n"
+        explanation += f"Because the patient's pH is at least 7.33, but less than 7.50, 0 points are added to the patient's score, keeping the total at {score}.\n"
     elif 7.25 <= pH < 7.33:
-        explanation += f"Because the patient's pH is between 7.25 and 7.32, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's pH is at least 7.25, but less than 7.33, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
         score += 2
     elif 7.15 <= pH < 7.25:
-        explanation += f"Because the patient's pH is between 7.15 and 7.24, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's pH is at least 7.15, but less than 7.25, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
         score += 3
     elif pH < 7.15:
         explanation += f"Because the patient's pH is below 7.15, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
@@ -253,21 +253,21 @@ The total APACHE II score is calculated by summing the points for each criterion
         explanation += f"Because the patient's sodium level is above 180 mmol/L, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
         score += 4
     elif 160 <= sodium < 180:
-        explanation += f"Because the patient's sodium level is between 160 and 179 mmol/L, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's sodium level is at least 160 mmol/L, but less than 180 mmol/L, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
         score += 3
     elif 155 <= sodium < 160:
-        explanation += f"Because the patient's sodium level is between 155 and 159 mmol/L, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's sodium level is at least 155 mmol/L, but less than 160 mmol/L, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
         score += 2
     elif 150 <= sodium < 155:
-        explanation += f"Because the patient's sodium level is between 150 and 154 mmol/L, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
+        explanation += f"Because the patient's sodium level is at least 150 mmol/L, but less than 155 mmol/L, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
         score += 1
     elif 130 <= sodium < 150:
-        explanation += f"Because the patient's sodium level is between 130 and 149 mmol/L, 0 points are added to the patient's score, keeping the total at {score}.\n"
+        explanation += f"Because the patient's sodium level is at least 130 mmol/L, but less than 150 mmol/L, 0 points are added to the patient's score, keeping the total at {score}.\n"
     elif 120 <= sodium < 130:
-        explanation += f"Because the patient's sodium level is between 120 and 129 mmol/L, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's sodium level is at least 120 mmol/L, but less than 130 mmol/L, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
         score += 2
     elif 111 <= sodium < 120:
-        explanation += f"Because the patient's sodium level is between 111 and 119 mmol/L, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's sodium level is at least 111 mmol/L, but less than 120 mmol/L, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
         score += 3
     elif sodium < 111:
         explanation += f"Because the patient's sodium level is below 111 mmol/L, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
@@ -280,18 +280,18 @@ The total APACHE II score is calculated by summing the points for each criterion
         explanation += f"Because the patient's potassium level is above 7.0 mmol/L, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
         score += 4
     elif 6.0 <= potassium < 7.0:
-        explanation += f"Because the patient's potassium level is between 6.0 and 6.9 mmol/L, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
+        explanation += f"Because the patient's potassium level is at least 6.0 mmol/L, but less than 7.0 mmol/L, 3 points are added to the score, making the current total {score} + 3 = {score + 3}.\n"
         score += 3
     elif 5.5 <= potassium < 6.0:
-        explanation += f"Because the patient's potassium level is between 5.5 and 5.9 mmol/L, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
+        explanation += f"Because the patient's potassium level is at least 5.5 mmol/L, but less than 6.0 mmol/L, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
         score += 1
     elif 3.5 <= potassium < 5.5:
-        explanation += f"Because the patient's potassium level is between 3.5 and 5.4 mmol/L, 0 points are added to the patient's score, keeping the total at {score}.\n"
+        explanation += f"Because the patient's potassium level is at least 3.5 mmol/L, but less than 5.5 mmol/L, 0 points are added to the patient's score, keeping the total at {score}.\n"
     elif 3.0 <= potassium < 3.5:
-        explanation += f"Because the patient's potassium level is between 3.0 and 3.4 mmol/L, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
+        explanation += f"Because the patient's potassium level is at least 3.0 mmol/L, but less than 3.5 mmol/L, 1 point is added to the score, making the current total {score} + 1 = {score + 1}.\n"
         score += 1
     elif 2.5 <= potassium < 3.0:
-        explanation += f"Because the patient's potassium level is between 2.5 and 2.9 mmol/L, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's potassium level is at least 2.5 mmol/L, but less than 3.0 mmol/L, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
         score += 2
     elif potassium < 2.5:
         explanation += f"Because the patient's potassium level is below 2.5 mmol/L, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
@@ -312,27 +312,27 @@ The total APACHE II score is calculated by summing the points for each criterion
     # Creatinine Levels
     if creatinine >= 3.5 and acute_renal_failure:
         additional_points = 8
-        explanation += f"Because the patient has acute renal failure and a creatinine level above 3.5, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        explanation += f"Because the patient has an acute renal failure and a creatinine level above 3.5 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
         score += additional_points
     elif 2.0 <= creatinine < 3.5 and acute_renal_failure:
         additional_points = 6
-        explanation += f"Because the patient has acute renal failure and a creatinine level between 2.0 and 3.5, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        explanation += f"Because the patient has an acute renal failure and a creatinine level that is at least 2.0 mg/dL, but less than 3.5 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
         score += additional_points
     elif creatinine >= 3.5 and chronic_renal_failure:
         additional_points = 4
-        explanation += f"Because the patient has chronic renal failure and a creatinine level above 3.5, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        explanation += f"Because the patient has a chronic renal failure and a creatinine level above 3.5 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
         score += additional_points
     elif 2.0 <= creatinine < 3.5 and chronic_renal_failure:
         additional_points = 3
-        explanation += f"Because the patient has chronic renal failure and a creatinine level between 2.0 and 3.5, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        explanation += f"Because the patient has a chronic renal failure and a creatinine level above 2.0 mg/dL, but less than 3.5 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
         score += additional_points
     elif 1.5 <= creatinine < 2.0 and acute_renal_failure:
         additional_points = 4
-        explanation += f"Because the patient has acute renal failure and a creatinine level between 1.5 and 2.0, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        explanation += f"Because the patient has an acute renal failure and a creatinine level above 1.5 mg/dL, but less than 2.0 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
         score += additional_points
     elif 1.5 <= creatinine < 2.0 and chronic_renal_failure:
         additional_points = 2
-        explanation += f"Because the patient has chronic renal failure and a creatinine level between 1.5 and 2.0, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        explanation += f"Because the patient has a chronic renal failure and a creatinine level above 1.5 mg/dL, but less than 2.0 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
         score += additional_points
 
 
@@ -340,22 +340,22 @@ The total APACHE II score is calculated by summing the points for each criterion
 
         if creatinine >= 3.5:
             additional_points = 4
-            explanation += f"Because the patient's creatinine level is at least 3.5 mg/dL (without acute renal failure), {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+            explanation += f"Because the patient's creatinine level is at least 3.5 mg/dL (without acute and chronic renal failure), {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
             score += additional_points
         elif 2.0 <= creatinine < 3.5 :
             additional_points = 3
-            explanation += f"Because the patient's creatinine level is between 2.0 and 3.4 mg/dL (without acute renal failure), {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+            explanation += f"Because the patient's creatinine level is at least 2.0 mg/dL, but less than 3.5 mg/dL (without acute and chronic renal failure), {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
             score += additional_points
         elif 1.5 <= creatinine < 2.0:
             additional_points = 2
-            explanation += f"Because the patient's creatinine level is between 1.5 and 1.9 mg/dL (without acute renal failure), {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+            explanation += f"Because the patient's creatinine level is at least 1.5 mg/dL, but less than 2.0 mg/dL (without acute and chronic renal failure), {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
             score += additional_points
 
         elif 0.6 <= creatinine < 1.5:
-            explanation += f"Because the patient's creatinine level is between 0.6 and 1.4, no points are added to the score, keeping the current total at {score}.\n"
+            explanation += f"Because the patient's creatinine level is between 0.6 mg/dL, but less than 1.5 mg/dL (without acute and chronic renal failure), no points are added to the score, keeping the current total at {score}.\n"
         elif creatinine < 0.6:
             additional_points = 2
-            explanation += f"Because the patient's creatinine level is below 0.6, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+            explanation += f"Because the patient's creatinine level is below 0.6 mg/dL (without acute and chronic renal failure), {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
             score += additional_points
 
 
@@ -366,15 +366,15 @@ The total APACHE II score is calculated by summing the points for each criterion
         explanation += f"Because the patient's hematocrit is 60% or higher, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
         score += 4
     elif 50 <= hematocrit < 60:
-        explanation += f"Because the patient's hematocrit is between 50% and 59%, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's hematocrit is at least 50%, but less than 60%, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
         score += 2
     elif 46 <= hematocrit < 50:
-        explanation += f"Because the patient's hematocrit is between 46% and 49%, 1 points is added to the score, making the current total {score} + 1 = {score + 1}.\n"
+        explanation += f"Because the patient's hematocrit is at least 46%, but less than 50%, 1 points is added to the score, making the current total {score} + 1 = {score + 1}.\n"
         score += 1
     elif 30 <= hematocrit < 46:
-        explanation += f"Because the patient's hematocrit is between 30% and 45%, 0 points are added to the patient's score, keeping the total at {score}.\n"
+        explanation += f"Because the patient's hematocrit is at least 30%, but less than 46%, 0 points are added to the patient's score, keeping the total at {score}.\n"
     elif 20 <= hematocrit < 30:
-        explanation += f"Because the patient's hematocrit is between 20% and 30%, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
+        explanation += f"Because the patient's hematocrit is at least 20%, but less than 30%, 2 points are added to the score, making the current total {score} + 2 = {score + 2}.\n"
         score += 2
     elif hematocrit < 20:
         explanation += f"Because the patient's hematocrit is less than 20%, 4 points are added to the score, making the current total {score} + 4 = {score + 4}.\n"
@@ -402,6 +402,7 @@ The total APACHE II score is calculated by summing the points for each criterion
         score += 4
 
     # Glasgow Coma Score
+    gcs = int(gcs)
     apache_ii_gcs = int(15 - gcs)
     explanation += f"The patient's Glasgow Coma Score is {gcs}. For this criterion, we subtract 15 from the {gcs} points and add that to the total score. 15 - {gcs} = {apache_ii_gcs}. Hence, we add {apache_ii_gcs} to the total making the current total {apache_ii_gcs} + {score} = {apache_ii_gcs + score}.\nHence, the patient's APACHE II score is {apache_ii_gcs + score}."
     score += apache_ii_gcs

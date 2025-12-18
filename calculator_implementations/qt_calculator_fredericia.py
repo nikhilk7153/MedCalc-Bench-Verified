@@ -13,7 +13,7 @@ def fredericia_calculator_explanation(input_variables):
     explanation += f"The RR interval is computed as 60/(heart rate), and so the RR interval is 60/{heart_rate} = {rr_interval_sec}.\n"
 
     qt_c = round_number(qt_interval/(rr_interval_sec) ** (1/3))
-    explanation += f"Hence, plugging in these values, we will get {qt_interval}/√({rr_interval_sec}) = {qt_c}."
+    explanation += f"Hence, plugging in these values, we will get {qt_interval}/({rr_interval_sec})^(1/3) = {qt_c}."
 
     explanation += f"The patient's corrected QT interval (QTc) is {qt_c} msec."
 

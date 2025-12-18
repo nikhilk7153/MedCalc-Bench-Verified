@@ -8,15 +8,12 @@ def framingham_risk_score_explanation(input_parameters):
 
     explanation = ("For males, the formula for computing the Framingham Risk Score is:\n52.00961 * ln(age) + 20.014077 * ln(total_cholesterol) + -0.905964 * ln(hdl_cholesterol) + 1.305784 * ln(sys_bp) + 0.241549 * bp_medicine + 12.096316 * smoker + -4.605038 * ln(age) * ln(total_cholesterol) + -2.84367 * ln(age_smoke) * smoker + -2.93323 * ln(age) * ln(age) - 172.300168.\n")
     
-
     explanation += ("The patient's age is capped at 70 for the ln(age_smoke) * smoker term if greater than 70. The 10-year risk percentage is calculated as: [1 - 0.9402^exp(risk_score)] * 100.\n")
     
     explanation += ("For females, the formula for computing the Framingham Risk Score is:\n31.764001 * ln(age) + 22.465206 * ln(total_cholesterol) + -1.187731 * ln(hdl_cholesterol) + 2.552905 * ln(sys_bp) + 0.420251 * bp_medicine + 13.07543 * smoker + -5.060998 * ln(age) * ln(total_cholesterol) + -2.996945 * ln(age_smoke) * smoker - 146.5933061.\n")
     
-
     explanation += ("The patient's age is capped at 78 for the ln(age_smoke) * smoker term if greater than 78. The 10-year risk percentage is calculated as: [1 - 0.98767^exp(risk_score)] * 100.\n")
         
-
 
     age = input_parameters["age"]
     gender = input_parameters["sex"]

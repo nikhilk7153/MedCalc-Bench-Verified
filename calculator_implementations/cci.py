@@ -19,9 +19,9 @@ def compute_cci_explanation(input_parameters):
 2. Myocardial infarction (history of definite or probable MI with EKG changes and/or enzyme changes): No = 0 points, Yes = +1 point
 3. Congestive heart failure (CHF) (exertional or paroxysmal nocturnal dyspnea, responsive to digitalis, diuretics, or afterload reducing agents): No = 0 points, Yes = +1 point
 4. Peripheral vascular disease (intermittent claudication, past bypass for chronic arterial insufficiency, history of gangrene or acute arterial insufficiency, untreated thoracic or abdominal aneurysm ≥6 cm): No = 0 points, Yes = +1 point
-5. Cerebrovascular accident (CVA) or transient ischemic attack (TIA) (history with minor or no residuals): No = 0 points, Yes = +1 point
+5. Cerebrovascular accident (CVA) or transient ischemic attack (TIA): No = 0 points, Yes = +1 point
 6. Dementia (chronic cognitive deficit): No = 0 points, Yes = +1 point
-7. Chronic pulmonary disease (CPD): No = 0 points, Yes = +1 point
+7. Chronic pulmonary disease (COPD): No = 0 points, Yes = +1 point
 8. Connective tissue disease: No = 0 points, Yes = +1 point
 9. Peptic ulcer disease (any history of treatment for ulcer disease or ulcer bleeding): No = 0 points, Yes = +1 point
 10. Liver disease: None = 0 points, Mild = +1 point, Moderate to severe = +3 points
@@ -148,7 +148,7 @@ The total score is calculated by summing the points for each criterion.
         elif parameter in input_parameters and not input_parameters[parameter]:
             explanation += f"The issue, '{parameter_to_name[parameter]},' is determined to be absent for the patient and so we do not add any points to the score, keeping the current total at {cci}.\n"
         elif parameter not in input_parameters:
-            explanation += f"The issue, '{parameter_to_name[parameter]},' is determined to be absent for the patient and so we do not add any points to the score, keeping the current total at {cci}.\n"
+            explanation += f"The issue, '{parameter_to_name[parameter]},' is not mentioned in the patient note and so we assume it to be absent for the patient. We do not add any points to the score, keeping the current total at {cci}.\n"
 
     explanation += f"The patient's CCI score is {cci} points."
 

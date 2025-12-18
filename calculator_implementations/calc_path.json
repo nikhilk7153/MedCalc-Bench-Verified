@@ -28,7 +28,7 @@
         "Calculator ID": 8
     },
     "MDRD GFR Equation": {
-        "File Path": "calculator_implementations/mdrd_gfr.py",
+        "File Path": "/calculator_implementations/mdrd_gfr.py",
         "Calculator ID": 9
     },
     "Ideal Body Weight": {

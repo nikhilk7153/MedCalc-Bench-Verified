@@ -104,8 +104,6 @@ def qt_interval_patient_notes_framingham():
 
     qt_interval = round(random.uniform(200, 500))
 
-    note = f"A patient has a heart rate of {heart_rate} bpm and a QT interval of {qt_interval} msec."
-
     input_parameters = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
     
     return note, input_parameters
@@ -241,7 +239,7 @@ def target_weight():
     return note, input_parameters
 
 
-with open("/Users/nikhilkhandekar/Documents/MedCalc-Bench/calculator_implementations/name_to_python.json") as file:
+with open("/Users/nikhilkhandekar/Documents/MedCalc-Bench-Verified/calculator_implementations/name_to_python.json") as file:
     calc_info  = json.load(file)
 
 problems = {}

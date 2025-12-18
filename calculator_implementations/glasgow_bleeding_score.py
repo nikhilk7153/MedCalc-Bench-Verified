@@ -10,9 +10,9 @@ def glasgow_bleeding_score_explanation(input_parameters):
 4. Systolic blood pressure (mm Hg): ≥110 = 0 points, 100-109 = +1 point, 90-99 = +2 points, <90 = +3 points
 5. Pulse ≥100 (per minute): No = 0 points, Yes = +1 point
 6. Melena present: No = 0 points, Yes = +1 point
-7. Presentation with syncope: No = 0 points, Yes = +1 point
-8. Liver disease history: No = 0 points, Yes = +1 point
-9. Cardiac failure present: No = 0 points, Yes = +1 point
+7. Recent syncope: No = 0 points, Yes = +2 points
+8. Hepatic disease history: No = 0 points, Yes = +2 points
+9. Cardiac failure present: No = 0 points, Yes = +2 points
 
 The total Glasgow-Blatchford Score is calculated by summing the points for each criterion.\n"""
 
@@ -21,7 +21,7 @@ The total Glasgow-Blatchford Score is calculated by summing the points for each 
     hemoglobin_exp, hemoglobin = unit_converter_new.conversion_explanation(input_parameters["hemoglobin"][0], "hemoglobin", 64500, None, input_parameters["hemoglobin"][1], "g/dL")
     bun_exp, bun = unit_converter_new.conversion_explanation(input_parameters["bun"][0], "BUN", 28.08, None, input_parameters["bun"][1], "mg/dL")
     gender = input_parameters["sex"]
-    systiolic_bp = input_parameters["sys_bp"][0]
+    systolic_bp = input_parameters["sys_bp"][0]
     heart_rate = input_parameters["heart_rate"][0]
     
     explanation += f"The current glasgow bleeding score is 0. The patient's gender is {gender}.\n"
@@ -67,18 +67,18 @@ The total Glasgow-Blatchford Score is calculated by summing the points for each 
     elif bun < 18.2:
         explanation += f"The BUN concentration is less than 18.2 mg/dL, and so we do not make any changes to the score, keeping the score at {score}.\n"
 
-    explanation += f"The patient's blood pressure is {systiolic_bp} mm Hg. "
+    explanation += f"The patient's blood pressure is {systolic_bp} mm Hg. "
 
-    if 100 <= systiolic_bp < 110:
+    if 100 <= systolic_bp < 110:
         explanation += f"Because the patient's systolic blood pressure is greater than or equal to 100 mm Hg, but less than 110 mm Hg, we increase the score by one point, making the current score {score} + 1 = {score + 1}.\n"
         score += 1
-    elif 90 <= systiolic_bp < 100:
+    elif 90 <= systolic_bp < 100:
         explanation += f"Because the patient's systolic blood pressure is greater than or equal to 90 mm Hg, but less than 100 mm Hg, we increase the score by two points, making the current score {score} + 2 = {score + 2}.\n"
         score += 2
-    elif systiolic_bp < 90:
+    elif systolic_bp < 90:
         explanation += f"Because the patient's systolic blood pressure is less than 90 mm Hg, we increase the score by three points, making the current score {score} + 3 = {score + 3}.\n"
         score += 3
-    elif systiolic_bp >= 110:
+    elif systolic_bp >= 110:
         explanation += f"Because the patient's systolic blood pressure is greater than or equal to 110 mm Hg, we do not add points to the score, keeping the current score at {score}.\n"
 
 

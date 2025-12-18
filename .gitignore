@@ -24,3 +24,5 @@ __pycache__/
 Thumbs.db
 
 push_to_huggingface.py
+train_data.csv
+.gitignore

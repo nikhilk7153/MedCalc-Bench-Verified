@@ -9,7 +9,7 @@ import ast
 with open("/Users/nikhilkhandekar/Documents/MedCalc-Bench-Verified/calculator_implementations/name_to_python.json") as file:
     calc_info = json.load(file)
 
-df_test = pd.read_csv("datasets/test_data.csv")
+df_test = pd.read_csv("datasets/test_data_12_18_2025.csv")
 
 
 csv_props = {"Row Number": [], "Calculator ID": [], "Calculator Name": [], "Category": [], "Output Type": [], "Note ID": [], "Note Type": [], 
@@ -163,7 +163,7 @@ for index, row in df_test.iterrows():
   
 
 df_output = pd.DataFrame(csv_props)
-df_output.to_csv("datasets/test_data_12_17_2025.csv", index=False)
+df_output.to_csv("datasets/test_data.csv", index=False)
 
 
 

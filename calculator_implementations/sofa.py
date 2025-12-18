@@ -159,10 +159,10 @@ The total SOFA Score is calculated by summing the points for each criterion.
         explanation += f"The patients urine output is {urine_output} mL/day.\n\n"
         
         
-    if creatinine >= 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 200):
+    if creatinine > 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 200):
         explanation += f"For four points to be given, either the patient's creatinine clearance must be greater than 5.0 mg/dL or the patient's urine output is less than 200 mL/day. Because at least one of these statemets is true, we increment the score by four points, making the current total {sofa_score} + 4 = {sofa_score + 4}.\n"
         sofa_score += 4
-    elif 3.5 <= creatinine < 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 500):
+    elif 3.5 <= creatinine <= 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 500):
             explanation += f"For three points to be given, either the patient's creatinine clearance must be between 3.5 mg/dL or 5.0 mg/dL or the patient's urine output is less than 500 mL/day. Because at least one of these statemets is true, we increment the score by three points, making the current total {sofa_score} + 3 = {sofa_score + 3}.\n"
             sofa_score += 3
     elif 2.0 <= creatinine < 3.5:

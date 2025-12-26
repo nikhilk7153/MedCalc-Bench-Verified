@@ -19,7 +19,7 @@
         "explanation function": "ckd_epi_2021_explanation",
         "calculator name": "CKD-EPI Equations for Glomerular Filtration Rate",
         "type": "lab test",
-        "question": "Using the 2021 CKD-EPI Creatinine equation, what is the patient's Glomerular Filtration Rate (GFR) in terms of mL/min/1.73 m\u00b2?"
+        "question": "Using the 2021 CKD-EPI Creatinine equation, what is the patient's Glomerular Filtration Rate (GFR) in terms of mL/min/1.73 m²?"
     },
     "4": {
         "sex": "sex",
@@ -53,7 +53,7 @@
         "explanation function": "bmi_calculator_explanation",
         "calculator name": "Body Mass Index (BMI)",
         "type": "physical",
-        "question": "What is the patient's body mass mass index (BMI)? Your answer should be in terms of kg/m\u00b2."
+        "question": "What is the patient's body mass mass index (BMI)? Your answer should be in terms of kg/m²."
     },
     "7": {
         "Calcium": "calcium",
@@ -89,7 +89,7 @@
         "explanation function": "mrdr_gfr_explanation",
         "calculator name": "MDRD GFR Equation",
         "type": "lab test",
-        "question": "Using the MDRD GFR Equation, what is the patient's Glomerular Filtration Rate (GFR) in terms of mL/min/1.73 m\u00b2? If the patient is black, please use the MDRD GFR Equation for Blacks."
+        "question": "Using the MDRD GFR Equation, what is the patient's Glomerular Filtration Rate (GFR) in terms of mL/min/1.73 m²? If the patient is black, please use the MDRD GFR Equation for Blacks."
     },
     "10": {
         "sex": "sex",
@@ -225,7 +225,7 @@
     },
     "23": {
         "creatinine": "creatinine",
-        "Continuous veno-venous hemodialysis for \u226524 hours in the past week": "cvvhd",
+        "Continuous veno-venous hemodialysis for ≥24 hours in the past week": "cvvhd",
         "Dialysis at least twice in the past week": "dialysis_twice",
         "international normalized ratio": "inr",
         "Sodium": "sodium",
@@ -530,7 +530,7 @@
         "age": "age",
         "Heart Rate or Pulse": "heart_rate",
         "Hemoptysis": "hemoptysis",
-        "O\u2082 saturation percentage": "oxygen_sat",
+        "O₂ saturation percentage": "oxygen_sat",
         "Recent surgery or trauma": "recent_surgery_or_trauma",
         "Previously documented Deep Vein Thrombosis": "previous_dvt",
         "Previously Documented Pulmonary Embolism": "previous_pe",
@@ -543,12 +543,12 @@
         "question": "What are the number of criteria met for the PERC Rule for Pulmonary Embolism (PE)?"
     },
     "49": {
-        "Question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)?",
+        "Question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)? You should use the CDC guidelines for opioid conversions from 2022.",
         "file path": "mme.py",
         "explanation function": "mme_explanation",
         "calculator name": "Morphine Milligram Equivalents (MME) Calculator",
         "type": "dosage",
-        "question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)?"
+        "question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)? You should use the CDC guidelines for opioid conversions from 2022."
     },
     "51": {
         "Temperature": "temperature",
@@ -605,7 +605,7 @@
         "explanation function": "bsa_calculator_explaination",
         "calculator name": "Body Surface Area Calculator",
         "type": "physical",
-        "question": "What is the patient's body surface area? Please output your answer in terms of m\u00b2."
+        "question": "What is the patient's body surface area? Please output your answer in terms of m²."
     },
     "61": {
         "Body Mass Index (BMI)": "body_mass_index",

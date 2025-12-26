@@ -12,10 +12,10 @@ MedCalc-Bench Verified is a re-verified version of MedCalc-Bench used to benchma
 
 In all, we hope that our dataset and benchmark serves as a call to improve the computational reasoning skills of LLMs in medical settings. 
 
-## MedCalc-Bench-Verified Dataset
+## Dataset Details
 
 
-In addition to the 1,100 evaluation instances, we also provide a training dataset of 10,538 instances which can be used for fine-tuning open-source LLMs. The training data can be found in ```train_data.csv```. This training dataset can also be found in the train split of the HuggingFace link. 
+In addition to the 1,100 evaluation instances, there is a training dataset of 10,538 instances which can be used for fine-tuning open-source LLMs. The training data can be found in ```train_data.csv```. This training dataset can also be found in the train split of the HuggingFace link. 
 
 Each Instance in the dataset contains the following information: 
 

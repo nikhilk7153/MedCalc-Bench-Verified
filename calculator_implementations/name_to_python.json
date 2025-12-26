@@ -543,12 +543,12 @@
         "question": "What are the number of criteria met for the PERC Rule for Pulmonary Embolism (PE)?"
     },
     "49": {
-        "Question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)? You should use the CDC guidelines for opioid conversions from 2022.",
+        "Question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)? You should use the conversions from the CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022.",
         "file path": "mme.py",
         "explanation function": "mme_explanation",
         "calculator name": "Morphine Milligram Equivalents (MME) Calculator",
         "type": "dosage",
-        "question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)? You should use the CDC guidelines for opioid conversions from 2022."
+        "question": "Based on the number of doses per day and the quantity of different doses, what is the patient's daily Morphine Miligram Equivalents (MME)? You should use the conversions from the CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022."
     },
     "51": {
         "Temperature": "temperature",

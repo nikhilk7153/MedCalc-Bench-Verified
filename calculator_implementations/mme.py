@@ -3,7 +3,8 @@ from rounding import round_number
 
 def mme_explanation(input_parameters):
 
-    explanation = """The Opioid Conversion Table with MME (Morphine Milligram Equivalent) conversion factors are listed below:
+    explanation = """The Opioid Conversion Table with MME (Morphine Milligram Equivalent) conversion factors based on the CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022 are listed below:
+
 1. Codeine: MME conversion factor = 0.15
 2. FentaNYL buccal: MME conversion factor = 0.13
 3. HYDROcodone: MME conversion factor = 1

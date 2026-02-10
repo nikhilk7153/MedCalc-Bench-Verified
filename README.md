@@ -3,7 +3,9 @@
 
 Updates to MedCalc-Bench Verified will be made on this page going forward. Here is the HuggingFace link to the dataset: https://huggingface.co/datasets/nsk7153/MedCalc-Bench-Verified. 
 
-This is an updated version that is modified from MedCalc-Bench-v1.2
+This is an updated version that is modified from MedCalc-Bench-v1.2. 
+
+You should specify which version (i.e. "MedCalc-Bench Verified v1.0.2". ect.) when you used when using this dataset. 
 
 # MedCalc-Bench Verified
 

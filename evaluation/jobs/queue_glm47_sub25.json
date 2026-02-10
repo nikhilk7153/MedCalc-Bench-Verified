@@ -1,0 +1,21 @@
+{
+  "defaults": {
+    "model": "glm-4.7",
+    "dataset_path": "../datasets/test_data_25pct_per_calc.csv",
+    "output_dir": "logs/runs",
+    "workers": 1,
+    "max_inflight": 1,
+    "queue_size": 16,
+    "max_retries": 5,
+    "resume": true,
+    "progress_every": 10,
+    "heartbeat_seconds": 30,
+    "task_log_every": 1,
+    "log_requests": true
+  },
+  "jobs": [
+    { "id": "mistral_zero_shot_sub25", "prompt_id": "mistral_zero_shot" },
+    { "id": "calc_spec_sub25", "prompt_id": "calc_spec" },
+    { "id": "encounter_cot_full_v2_sub25", "prompt_id": "encounter_cot_full_v2" }
+  ]
+}

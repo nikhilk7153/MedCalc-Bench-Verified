@@ -1,0 +1,61 @@
+{
+  "run_id": "20260204_oracle_52thinking_v2_incorrect198",
+  "rows_total": 198,
+  "correct": 140,
+  "incorrect": 58,
+  "accuracy": 0.7070707070707071,
+  "attempts_hist": {
+    "1": 184,
+    "2": 14
+  },
+  "latency_s": {
+    "mean": 94.92527777777778,
+    "median": 81.538,
+    "p50": 81.11,
+    "p90": 153.997,
+    "p95": 199.961,
+    "p99": 319.916
+  },
+  "by_calc_type": {
+    "date": {
+      "total": 9,
+      "correct": 9,
+      "incorrect": 0,
+      "accuracy": 1.0
+    },
+    "diagnosis": {
+      "total": 10,
+      "correct": 7,
+      "incorrect": 3,
+      "accuracy": 0.7
+    },
+    "dosage": {
+      "total": 3,
+      "correct": 0,
+      "incorrect": 3,
+      "accuracy": 0.0
+    },
+    "lab test": {
+      "total": 73,
+      "correct": 67,
+      "incorrect": 6,
+      "accuracy": 0.9178082191780822
+    },
+    "risk": {
+      "total": 93,
+      "correct": 49,
+      "incorrect": 44,
+      "accuracy": 0.5268817204301075
+    },
+    "severity": {
+      "total": 10,
+      "correct": 8,
+      "incorrect": 2,
+      "accuracy": 0.8
+    }
+  },
+  "outputs": {
+    "dedup_results_csv": "REDACTED/evaluation/results/results_oracle_52thinking_v2_incorrect198.csv",
+    "replies_jsonl": "REDACTED/evaluation/results/replies_oracle_52thinking_v2_incorrect198.jsonl"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "defaults": {
+    "workers": 9,
+    "queue_size": 32,
+    "max_retries": 5,
+    "resume": true,
+    "output_dir": "logs/runs",
+    "progress_every": 5,
+    "heartbeat_seconds": 10,
+    "task_log_every": 5,
+    "log_requests": true,
+    "max_inflight": 9
+  },
+  "jobs": [
+    {
+      "id": "encounter_cot_full_v2",
+      "prompt_id": "encounter_cot_full_v2",
+      "dataset_path": "../datasets/test_data.csv"
+    },
+    {
+      "id": "mistral_zero_shot",
+      "prompt_id": "mistral_zero_shot",
+      "dataset_path": "../datasets/test_data.csv"
+    }
+  ]
+}

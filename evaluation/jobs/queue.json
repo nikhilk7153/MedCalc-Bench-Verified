@@ -1,0 +1,36 @@
+{
+  "defaults": {
+    "workers": 9,
+    "queue_size": 32,
+    "max_retries": 5,
+    "resume": true,
+    "output_dir": "logs/runs",
+    "progress_every": 5,
+    "heartbeat_seconds": 10,
+    "task_log_every": 5,
+    "log_requests": true,
+    "max_inflight": 9
+  },
+  "jobs": [
+    {
+      "id": "calc_spec",
+      "prompt_id": "calc_spec",
+      "dataset_path": "../datasets/test_data.csv"
+    },
+    {
+      "id": "encounter_cot_full",
+      "prompt_id": "encounter_cot_full",
+      "dataset_path": "../datasets/test_data.csv"
+    },
+    {
+      "id": "encounter_extract_only",
+      "prompt_id": "encounter_extract_only",
+      "dataset_path": "../datasets/test_data.csv"
+    },
+    {
+      "id": "encounter_cot_full_v2",
+      "prompt_id": "encounter_cot_full_v2",
+      "dataset_path": "../datasets/test_data.csv"
+    }
+  ]
+}

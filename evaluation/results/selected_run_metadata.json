@@ -1,0 +1,74 @@
+{
+  "glm_runs": [
+    {
+      "label": "glm-4.6v calc_spec",
+      "run_id": "20260202T212511Z_glm-4.6v_calc_spec_calc_spec",
+      "model": "glm-4.6v",
+      "prompt_id": "calc_spec",
+      "dataset_path": "../datasets/test_data.csv",
+      "workers": 9,
+      "max_inflight": 9,
+      "result_summary_json": "evaluation/results/results_glm-4.6v_calc_spec_full.json"
+    },
+    {
+      "label": "glm-4.6v mistral_zero_shot",
+      "run_id": "20260203T212022Z_glm-4.6v_mistral_zero_shot_mistral_zero_shot",
+      "model": "glm-4.6v",
+      "prompt_id": "mistral_zero_shot",
+      "dataset_path": "../datasets/test_data.csv",
+      "workers": 9,
+      "max_inflight": 9,
+      "result_summary_json": "evaluation/results/results_glm-4.6v_mistral_zero_shot.json"
+    },
+    {
+      "label": "glm-4.6v encounter_cot_full_v2",
+      "run_id": "20260203T202955Z_glm-4.6v_encounter_cot_full_v2_encounter_cot_full_v2",
+      "model": "glm-4.6v",
+      "prompt_id": "encounter_cot_full_v2",
+      "dataset_path": "../datasets/test_data.csv",
+      "workers": 9,
+      "max_inflight": 9,
+      "result_summary_json": "evaluation/results/results_glm-4.6v_encounter_cot_full_v2.json"
+    },
+    {
+      "label": "glm-4.7 calc_spec sub25",
+      "run_id": "20260203T220328Z_glm-4.7_calc_spec_calc_spec_sub25",
+      "model": "glm-4.7",
+      "prompt_id": "calc_spec",
+      "dataset_path": "../datasets/test_data_25pct_per_calc.csv",
+      "workers": 1,
+      "max_inflight": 1,
+      "result_summary_json": "evaluation/results/results_glm-4.7_calc_spec_full.json"
+    },
+    {
+      "label": "glm-4.7 mistral_zero_shot sub25",
+      "run_id": "20260204T084309Z_glm-4.7_mistral_zero_shot_mistral_zero_shot_sub25",
+      "model": "glm-4.7",
+      "prompt_id": "mistral_zero_shot",
+      "dataset_path": "../datasets/test_data_25pct_per_calc.csv",
+      "workers": 1,
+      "max_inflight": 1,
+      "result_summary_json": "evaluation/results/results_glm-4.7_mistral_zero_shot.json"
+    },
+    {
+      "label": "glm-4.7 encounter_cot_full_v2 sub25",
+      "run_id": "20260204T162646Z_glm-4.7_encounter_cot_full_v2_encounter_cot_full_v2_sub25",
+      "model": "glm-4.7",
+      "prompt_id": "encounter_cot_full_v2",
+      "dataset_path": "../datasets/test_data_25pct_per_calc.csv",
+      "workers": 1,
+      "max_inflight": 1,
+      "result_summary_json": "evaluation/results/results_glm-4.7_encounter_cot_full_v2.json"
+    }
+  ],
+  "oracle_runs": [
+    {
+      "run_id": "20260204_oracle_52thinking_v2_incorrect198",
+      "kind": "completed"
+    },
+    {
+      "run_id": "20260203_oracle_52thinking_v2_incorrect198",
+      "kind": "partial"
+    }
+  ]
+}

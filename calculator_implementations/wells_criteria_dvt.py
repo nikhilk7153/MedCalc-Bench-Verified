@@ -27,7 +27,7 @@ def compute_wells_criteria_dvt_explanation(input_parameters):
 9. Previously documented DVT: No = 0 points, Yes = +1 point
 10. Alternative diagnosis to DVT as likely or more likely: No = 0 points, Yes = -2 points
 
-The total score is calculated by summing the points for each criterion.
+The total score is calculated by summing the points for each criterion. Interpretation thresholds depend on the chosen scheme (two-tier vs three-tier).
     """
 
     # Initializing points and output explanation
@@ -81,8 +81,8 @@ The total score is calculated by summing the points for each criterion.
 
         count += 1
 
-    output += f"The Well's DVT score for the patient is {score}."
+    output += f"The Well's DVT score for the patient is {score}. "
+    output += "Ensure you interpret the score using the intended threshold scheme (two-tier vs three-tier)."
 
     return {"Explanation": output, "Answer": score}
-
 

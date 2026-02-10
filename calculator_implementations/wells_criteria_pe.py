@@ -14,7 +14,7 @@ The criteria for the Wells' Criteria for Pulmonary Embolism score are listed bel
 6. Hemoptysis: No = 0 points, Yes = +1 point
 7. Malignancy with treatment within 6 months or palliative: No = 0 points, Yes = +1 point
 
-The total score is calculated by summing the points for each criterion.
+The total score is calculated by summing the points for each criterion. Interpretation thresholds depend on the chosen scheme (two-tier vs three-tier).
    """
 
    explanation += "\nThe Well's score for pulmonary embolism is currently 0.\n"
@@ -106,6 +106,7 @@ The total score is calculated by summing the points for each criterion.
    else:
          explanation += f'Malignany with treatment within 6 months or palliative is not reported in the patient note and so we assume that this is absent for the patient, keeping the score at {score}.\n'
 
-   explanation += f"The patient's Well's score for pulmonary embolism is {score}."
+   explanation += f"The patient's Well's score for pulmonary embolism is {score}. "
+   explanation += "Ensure you interpret the score using the intended threshold scheme (two-tier vs three-tier)."
 
    return {"Explanation": explanation, "Answer": score}

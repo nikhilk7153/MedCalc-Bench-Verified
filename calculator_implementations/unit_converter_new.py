@@ -13,19 +13,19 @@ def vol_to_vol_explanation(value, src_unit, tgt_unit, compound="", conversion_fa
         }
 
         explanation = ""
-        
+        conversion_factor_value = conversion_factors_L[src_unit] / conversion_factors_L[tgt_unit]
+
         if src_unit == tgt_unit:
             return f"The volume of {compound} is {value} {tgt_unit}. ", value
-        else:
 
-            if not conversion_factor:
-                answer = round_number(value * conversion_factor)
+        if conversion_factor:
+            answer = round_number(conversion_factor_value)
+            explanation += f"The conversion factor is {answer} {tgt_unit} for every unit of {src_unit}. "
+            return explanation, answer
 
-                explanation += f"To convert {src_unit} {compound} to {tgt_unit}, multiply by the conversion factor {conversion_factor} {tgt_unit}/{src_unit}, resulting to {src_unit} {compound} * {conversion_factor} {tgt_unit}/{src_unit} = {answer} {tgt_unit} {compound}. "   
-            else:
-                conversion_factor = conversion_factors_L[src_unit]/conversion_factors_L[tgt_unit]
-                answer = round_number(conversion_factor)
-                explanation += f"The conversion factor is {answer} {tgt_unit} for every unit of {src_unit}. "
+        factor_display = round_number(conversion_factor_value)
+        answer = round_number(value * conversion_factor_value)
+        explanation += f"To convert {src_unit} {compound} to {tgt_unit}, multiply by the conversion factor {factor_display} {tgt_unit}/{src_unit}, resulting to {src_unit} {compound} * {factor_display} {tgt_unit}/{src_unit} = {answer} {tgt_unit} {compound}. "
 
         return explanation, answer
 
@@ -107,6 +107,7 @@ def mEq_to_mol_explanation(value, compound, valence, tgt_unit):
 
     explanation = f"To convert from {value} mEq to {tgt_unit}, convert from mEq to mmol. "
 
+    # mEq -> mmol uses valence (1 mmol = valence mEq).
     mol = round_number(value/valence)
 
     explanation += f"The compound {value} has a valence of {valence}, and so divide the valence by the value of mEq to get, {value} mEq/({valence} mEq/mmol) = {mol} mmol {compound}. "
@@ -177,6 +178,7 @@ def conversion_explanation(value, compound, molar_mass, valence, src_unit, tgt_u
 
     explanation = ""
 
+    # Concentration conversions: convert mass and volume parts independently.
     if "/" in src_unit and "/" in tgt_unit:
 
         src_mass_unit = src_unit.split("/")[0]
@@ -237,7 +239,9 @@ def conversion_explanation(value, compound, molar_mass, valence, src_unit, tgt_u
             return f"The volume is {value} {tgt_unit}. ", value
 
         explanation, value = vol_to_vol_explanation(value, src_unit, tgt_unit)
-        return explanation, result
+        return explanation, value
+
+    raise ValueError(f"Unsupported conversion for {compound}: {src_unit} -> {tgt_unit}")
        
 
 def mass_conversion_explanation(value, compound, valence, molar_mass, src_mass_unit, tgt_mass_unit):
@@ -290,6 +294,28 @@ def convert_to_units_per_liter_explanation(value, unit, compound, target_unit):
 
     explanation = ""
 
+    normalized_unit = unit.replace(" ", "").replace("×", "x").replace("X", "x")
+    normalized_unit = normalized_unit.replace("µ", "u").lower()
+    scaled_units = {
+        "k/ul": ("µL", 1e3),
+        "k/mm^3": ("mm^3", 1e3),
+        "10^3/ul": ("µL", 1e3),
+        "10^3/mm^3": ("mm^3", 1e3),
+        "x10^3/ul": ("µL", 1e3),
+        "x10^3/mm^3": ("mm^3", 1e3),
+        "10^9/l": ("L", 1e9),
+        "x10^9/l": ("L", 1e9),
+    }
+
+    if normalized_unit in scaled_units:
+        base_unit, scale = scaled_units[normalized_unit]
+        explanation += (
+            f"The patient's concentration of {compound} is {value} {unit}. "
+            f"This unit implies a scaling factor of {scale} count/{base_unit}. "
+        )
+        value = round_number(value * scale)
+        unit = base_unit
+
     if unit == target_unit:
         return f"The patient's concentration of {compound} is {value} count/{unit}. ", value
     else:
@@ -305,14 +331,12 @@ def convert_to_units_per_liter_explanation(value, unit, compound, target_unit):
 
 def mmHg_to_kPa_explanation(mmHg, compound):
     answer = round_number(0.133322 * mmHg)
-    explanation = f"To convert the partial pressure of {compound} from mm Hg of {compound} to kPa, multiply by the conversion factor of 0.133322 mm Hg/kPa, which will give us {mmHg} * 0.133322 mm Hg/kPa = {answer} kPa of {compound}.\n"
+    explanation = f"To convert the partial pressure of {compound} from mm Hg to kPa, multiply by the conversion factor of 0.133322 kPa/mm Hg, which will give us {mmHg} * 0.133322 kPa/mm Hg = {answer} kPa of {compound}.\n"
 
     return explanation, answer
 
 def kPa_to_mmHg_explanation(kPa, compound):
     answer = round_number(7.50062 * kPa)
-    explanation = f"To convert the partial pressure of {compound} from mm Hg of {compound} to kPa, multiply by the conversion factor of 0.133322 mm Hg/kPa, which will give us {kPa} * 0.133322 mm Hg/kPa = {answer} kPa of {compound}.\n"
+    explanation = f"To convert the partial pressure of {compound} from kPa to mm Hg, multiply by the conversion factor of 7.50062 mm Hg/kPa, which will give us {kPa} * 7.50062 mm Hg/kPa = {answer} mm Hg of {compound}.\n"
 
     return explanation, answer
-
-

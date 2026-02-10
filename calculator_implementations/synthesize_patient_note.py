@@ -5,6 +5,11 @@ from datetime import datetime, timedelta
 import importlib.util
 import height_conversion
 from rounding import round_number
+import os
+
+# Get the directory where this script is located
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 
 #random.seed(42)
 
@@ -18,7 +23,8 @@ def random_date():
     if month in set([1, 3, 5, 7, 8, 10, 12]):
         day = random.randint(1, 31)
     elif month == 2:
-        if month % 4 == 0:
+        is_leap = year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+        if is_leap:
             day = random.randint(1, 29)
         else:
             day = random.randint(1, 28)
@@ -104,6 +110,8 @@ def qt_interval_patient_notes_framingham():
 
     qt_interval = round(random.uniform(200, 500))
 
+    note = f"A patient has a heart rate of {heart_rate} bpm and a QT interval of {qt_interval} msec."
+
     input_parameters = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
     
     return note, input_parameters
@@ -172,9 +180,11 @@ def mme_conversion():
         key_name_dose_per_day = drugs[i] + " Dose Per Day"
 
         if drugs[i] == "FentaNYL buccal":
-            input_parameters[key_name_dose] = [num_amount , "µg"]
+            unit_label = "µg"
+            input_parameters[key_name_dose] = [num_amount , unit_label]
         else:
-            input_parameters[key_name_dose] = [num_amount , "mg"]
+            unit_label = "mg"
+            input_parameters[key_name_dose] = [num_amount , unit_label]
         
         input_parameters[key_name_dose_per_day] = [num_doses, "per day"]
 
@@ -184,13 +194,13 @@ def mme_conversion():
             add_s = ''
 
         if (num_instances == 2 or num_instances == 3) and i == len(drugs) - 1:
-            note += f"and {num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day."
+            note += f"and {num_amount} {unit_label} of {drugs[i]} {num_doses} time{add_s} a day."
         elif (num_instances == 1 and i == 0):
-            note += f"{num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day. "
+            note += f"{num_amount} {unit_label} of {drugs[i]} {num_doses} time{add_s} a day. "
         elif (num_instances == 3):
-            note += f"{num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day, "
+            note += f"{num_amount} {unit_label} of {drugs[i]} {num_doses} time{add_s} a day, "
         elif (num_instances == 2):
-            note += f"{num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day "
+            note += f"{num_amount} {unit_label} of {drugs[i]} {num_doses} time{add_s} a day "
 
     return note, input_parameters
 
@@ -205,7 +215,7 @@ def steroid_conversion():
 
     input_parameters = {"input steroid": ['Betamethasone IV', random_value, "mg"], "target steroid": choices[0]}
     
-    amount = round_number(steroid_conversion_calculator.compute_steroid_conversion(input_parameters))
+    amount = round_number(steroid_conversion_calculator.compute_steroid_conversion_explanation(input_parameters)["Answer"])
 
     note = f"A patient has taken {amount} mg of {choices[0]}. "
 
@@ -224,11 +234,14 @@ def target_weight():
     height_unit = random.choice(height_units)
 
     if height_unit == "in":
-        height_value = round(height_conversion.height_conversion_in([height_value, "m"]))
+        _, height_value = height_conversion.height_conversion_explanation_in([height_value, "m"])
+        height_value = round(height_value)
     elif height_unit == "cm":
-        height_value = round(height_conversion.height_conversion_cm([height_value, "m"]))
+        _, height_value = height_conversion.height_conversion_explanation_cm([height_value, "m"])
+        height_value = round(height_value)
     elif height_unit == "m":
-        height_value = round(height_conversion.height_conversion([height_value, "m"]), 2)
+        _, height_value = height_conversion.height_conversion_explanation([height_value, "m"])
+        height_value = round(height_value, 2)
 
     bmi = round(random.uniform(18, 25) , 1)
 
@@ -239,8 +252,8 @@ def target_weight():
     return note, input_parameters
 
 
-with open("/Users/nikhilkhandekar/Documents/MedCalc-Bench-Verified/calculator_implementations/name_to_python.json") as file:
-    calc_info  = json.load(file)
+with open(os.path.join(SCRIPT_DIR, "name_to_python.json"), "r") as file:
+    calc_info = json.load(file)
 
 problems = {}
 
@@ -280,7 +293,11 @@ for calc_id in calc_ids:
     
             key_name =  str(i + 1)
             
-            spec = importlib.util.spec_from_file_location("my_module", calc_info[calc_id]["file path"])
+            file_path = calc_info[calc_id]["file path"]
+            if not os.path.isabs(file_path):
+                file_path = os.path.join(SCRIPT_DIR, file_path)
+
+            spec = importlib.util.spec_from_file_location("my_module", file_path)
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
 
@@ -300,8 +317,6 @@ for calc_id in calc_ids:
 
 print(data)
 
-with open("synthetic_instances_train_2.json", "w") as file:
+with open(os.path.join(PROJECT_ROOT, "synthetic_instances_train_2.json"), "w") as file:
     json.dump(data, file, indent=4)
-
-
 

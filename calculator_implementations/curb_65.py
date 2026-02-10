@@ -8,12 +8,13 @@ def curb_65_explanation(input_parameters):
     explanation  = """The CURB-65 Score criteria are listed below:
 
 1. Confusion: No = 0 points, Yes = +1 point
-2. BUN >19 mg/dL (>7 mmol/L urea): No = 0 points, Yes = +1 point
+2. BUN >20 mg/dL (>7 mmol/L urea): No = 0 points, Yes = +1 point
 3. Respiratory Rate ≥30: No = 0 points, Yes = +1 point
 4. Systolic BP <90 mmHg or Diastolic BP ≤60 mmHg: No = 0 points, Yes = +1 point
 5. Age ≥65: No = 0 points, Yes = +1 point
 
 The total CURB-65 score is calculated by summing the points for each criterion.
+If BUN is provided in mmol/L, it is treated as urea mmol/L (same numeric value) and converted to mg/dL by multiplying by 2.8.
 """
 
     explanation += "\nThe CURB-65 score is current at 0 points.\n"
@@ -44,11 +45,11 @@ The total CURB-65 score is calculated by summing the points for each criterion.
 
     explanation += bun_exp
 
-    if bun > 19:
-        explanation += f"The patient's BUN concentration is greater than 19 mg/dL and so we add 1 point to score making the current total {curb_65_score} + 1 = {curb_65_score + 1}.\n"
+    if bun > 20:
+        explanation += f"The patient's BUN concentration is greater than 20 mg/dL and so we add 1 point to score making the current total {curb_65_score} + 1 = {curb_65_score + 1}.\n"
         curb_65_score += 1
     else:
-        explanation += f"The patient's BUN concentration is less than or equal to 19 mg/dL and so 0 points are added to score, keeping the current total at {curb_65_score}.\n"
+        explanation += f"The patient's BUN concentration is less than or equal to 20 mg/dL and so 0 points are added to score, keeping the current total at {curb_65_score}.\n"
 
     explanation += f"The patient's respiratory rate is {respiratory_rate} breaths per minute. "
 
@@ -69,4 +70,3 @@ The total CURB-65 score is calculated by summing the points for each criterion.
     explanation += f"The patient's CURB-65 score is {curb_65_score}."
 
     return {"Explanation": explanation, "Answer": curb_65_score}
-

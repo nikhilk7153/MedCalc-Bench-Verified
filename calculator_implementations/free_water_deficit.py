@@ -15,6 +15,7 @@ def free_water_deficit_explanation(input_variables):
     explanation += "Elderly male: 50% (0.5)\n"
     explanation += "Elderly female: 45% (0.45)\n"
     explanation += "Child: 60% (0.6)\n"
+    explanation += "Note: Total body water (TBW) factors are approximate and may over- or underestimate in obesity or critical illness.\n"
 
     age_exp, age = age_conversion.age_conversion_explanation(input_variables["age"])
     gender = input_variables["sex"]
@@ -23,6 +24,7 @@ def free_water_deficit_explanation(input_variables):
     explanation += f"The patient's is a {gender}.\n"
 
 
+    # Total body water fraction depends on age and sex bands.
     if 0 <= age < 18:
         tbw = 0.6
         explanation += f"The patient is less than 18 years old and so the patient is a child. This means total body water percentage value is 0.6.\n"
@@ -53,4 +55,3 @@ def free_water_deficit_explanation(input_variables):
 
 
     return {"Explanation": explanation, "Answer": answer}
-

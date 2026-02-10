@@ -9,6 +9,7 @@ def compute_delta_gap_explanation(input_parameters):
 
     explanation += anion_gap_resp["Explanation"]
 
+    # Delta gap uses 12 mEq/L as the normal anion gap reference.
     anion_gap_val = anion_gap_resp["Answer"]
 
     answer = round_number(anion_gap_val - 12.0)

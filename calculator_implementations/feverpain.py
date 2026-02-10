@@ -14,6 +14,7 @@ def compute_fever_pain_explanation(input_parameters):
 5. Severe tonsil inflammation: No = 0 points, Yes = +1 point
 
 The FeverPAIN score is calculated by summing the points for each criterion.
+Note: If cough/coryza status is missing, this implementation does not award a point for that criterion.
     """
 
     explanation += "\nThe patient's current FeverPain score is 0.\n"
@@ -22,13 +23,12 @@ The FeverPAIN score is calculated by summing the points for each criterion.
         
         if parameter == 'cough_coryza_absent':
             if parameter not in input_parameters:
-                explanation += f"Whether the patient has {parameter_name[parameter]} is not reported and so we assume that it is absent for the patient. Because of this, we add one point to the score, making the current total {fever_pain_score} + 1 =  {fever_pain_score + 1}.\n"
-                fever_pain_score += 1
+                explanation += f"Whether the patient has {parameter_name[parameter]} is not reported. This implementation does not award a point for that criterion, keeping the current total at {fever_pain_score}.\n"
             elif input_parameters[parameter]:
                 explanation += f"The patient is determined to have {parameter_name[parameter]}. Because of this, we add one point to the score, making the current total {fever_pain_score} + 1 = {fever_pain_score + 1}.\n"
                 fever_pain_score += 1
             else:
-                explanation += f"The patient is determined to have a cough or corzyea at the time of admission. Because of this, we do not add any points to the current total, keeping the current total at {fever_pain_score}.\n"
+                explanation += f"The patient is determined to have a cough or coryza at the time of admission. Because of this, we do not add any points to the current total, keeping the current total at {fever_pain_score}.\n"
         else:
             if parameter not in input_parameters:
                 explanation += f"Whether the patient has {parameter_name[parameter]} is not reported and so we assume that it is absent for the patient. Because of this, we do not increment the score, keeping the current total at {fever_pain_score}.\n"
@@ -41,4 +41,3 @@ The FeverPAIN score is calculated by summing the points for each criterion.
     explanation += f"The patient's FeverPain score is {fever_pain_score} points."
 
     return {"Explanation": explanation, "Answer": fever_pain_score}
-

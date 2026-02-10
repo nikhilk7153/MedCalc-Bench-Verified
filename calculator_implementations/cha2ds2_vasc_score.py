@@ -15,6 +15,7 @@ def generate_cha2ds2_vasc_explanation(params):
 7. Diabetes history: No = 0 points, Yes = +1 point
 
 The CHA2DS2-VASc score is calculated by summing the points for each criterion.
+Note: Some recent guidance uses CHA2DS2-VA (female sex is not an independent point). If female sex is the only point, it should be treated as a modifier rather than a stand-alone indication.
     """
    
     output += "\nThe current CHA2DS2-VASc score is 0.\n"
@@ -132,4 +133,3 @@ The CHA2DS2-VASc score is calculated by summing the points for each criterion.
     output += f"The patient's CHA2DS2-VASc Score is {score}."
 
     return {"Explanation": output, "Answer": score}
-

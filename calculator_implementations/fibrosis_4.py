@@ -18,7 +18,8 @@ def compute_fib4_explanation(input_parameters):
 
     explanation_platelet, platelet_value = unit_converter_new.convert_to_units_per_liter_explanation(src_value, src_unit, "platelets", "L")
 
-    count_platelet_billions = platelet_value/(1e9)
+    # Platelet count must be in billions per liter for the formula.
+    count_platelet_billions = platelet_value / 1e9
     result = round_number((age * ast_value)/(count_platelet_billions * math.sqrt(alt_value)))
 
     explanation += f"The patient's concentration of AST is {ast_value} U/L.\n"
@@ -29,4 +30,3 @@ def compute_fib4_explanation(input_parameters):
     explanation += f"Hence, the Fibrosis-4 score is {result}."
     
     return {"Explanation": explanation, "Answer": result}
-

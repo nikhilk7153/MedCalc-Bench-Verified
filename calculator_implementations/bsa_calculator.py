@@ -13,8 +13,8 @@ def bsa_calculator_explaination(input_variables):
     output += height_explaination + "\n"
     output += weight_explanation + "\n"
  
+    # Mosteller formula: sqrt((kg * cm)/3600).
     answer = round_number(math.sqrt(weight * height/3600))
     output += f"Therefore, the patient's bsa is sqrt(({weight} (in kgs) * {height} (in cm))/3600) = {answer} m^2."
 
     return {"Explanation": output, "Answer": answer}
-

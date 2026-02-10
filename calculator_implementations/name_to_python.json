@@ -86,7 +86,7 @@
         "creatinine": "creatinine",
         "Race": "race",
         "file path": "mdrd_gfr.py",
-        "explanation function": "mrdr_gfr_explanation",
+        "explanation function": "mdrd_gfr_explanation",
         "calculator name": "MDRD GFR Equation",
         "type": "lab test",
         "question": "Using the MDRD GFR Equation, what is the patient's Glomerular Filtration Rate (GFR) in terms of mL/min/1.73 m²? If the patient is black, please use the MDRD GFR Equation for Blacks."
@@ -213,7 +213,7 @@
         "explanation function": "compute_glasgow_coma_score_explanation",
         "calculator name": "Glasgow Coma Score (GCS)",
         "type": "severity",
-        "question": "What is the patient's Glasgow Coma Score?"
+        "question": "What is the patient's Glasgow Coma Score? If any component is not testable, respond with NT."
     },
     "22": {
         "weight": "weight",
@@ -283,10 +283,27 @@
         "explanation function": "glasgow_bleeding_score_explanation",
         "calculator name": "Glasgow-Blatchford Bleeding Score (GBS)",
         "type": "risk",
-        "question": "What is the patient's Glasgow-Blatchford Bleeding score?"
+        "question": "What is the patient's Glasgow-Blatchford Bleeding score? This version uses BUN in mg/dL."
+    },
+    "70": {
+        "Heart Rate or Pulse": "heart_rate",
+        "Urea": "urea",
+        "Urea (mmol/L)": "urea",
+        "sex": "sex",
+        "Cardiac Failure Present": "cardiac_failure",
+        "Hemoglobin": "hemoglobin",
+        "Melena Present": "melena_present",
+        "Systolic Blood Pressure": "sys_bp",
+        "Recent Syncope": "syncope",
+        "Hepatic disease history": "hepatic_disease_history",
+        "file path": "glasgow_bleeding_score_urea.py",
+        "explanation function": "glasgow_bleeding_score_urea_explanation",
+        "calculator name": "Glasgow-Blatchford Bleeding Score (Urea, mmol/L)",
+        "type": "risk",
+        "question": "What is the patient's Glasgow-Blatchford Bleeding score using urea in mmol/L?"
     },
     "28": {
-        "History of severe organ failure or immunocompromise": "severe_organ_failure_or_immunocompromise",
+        "History of severe organ failure or immunocompromise": "organ_failure_immunocompromise",
         "age": "age",
         "Temperature": "temperature",
         "Mean arterial pressure": "mean_arterial_pressure",
@@ -344,11 +361,14 @@
         "Sodium": "sodium",
         "Glucose": "glucose",
         "Blood Urea Nitrogen (BUN)": "bun",
+        "BUN (mmol/L)": "bun",
+        "Urea": "bun",
+        "Urea (mmol/L)": "bun",
         "file path": "sOsm.py",
         "explanation function": "compute_serum_osmolality_explanation",
         "calculator name": "Serum Osmolality",
         "type": "lab test",
-        "question": "What is the patient's serum osmolality in terms of mOsm/kg? You may take the alcohol content as 0 mg/dL."
+        "question": "What is the patient's serum osmolality in terms of mOsm/kg? You may take the alcohol content as 0 mg/dL. If BUN is given in mmol/L, treat it as urea mmol/L."
     },
     "31": {
         "Glucose": "glucose",
@@ -400,13 +420,13 @@
         "age": "age",
         "sex": "sex",
         "Surgery Type": "surgery_type",
-        "Major Surgery in the last month": "major_surgery",
-        "Congestive Heart Failure in the last month": "chf",
+        "Major Surgery in the last month": "major_surgery_last_month",
+        "Congestive Heart Failure in the last month": "chf_last_month",
         "Sepsis in the last month": "sepsis",
         "Pneumonia in the last month": "pneumonia",
-        "Immobilizing plaster cast in the last month": "immobilizing_plaster_case",
+        "Immobilizing plaster cast in the last month": "immobilizing_plaster_cast",
         "Hip, pelvis, or leg fracture in the last month": "hip_pelvis_leg_fracture",
-        "Stroke in the last month": "stroke",
+        "Stroke in the last month": "stroke_last_month",
         "Multiple trauma in the last month": "multiple_trauma",
         "Acute spinal cord injury causing paralysis in the last month": "acute_spinal_chord_injury",
         "Varicose veins": "varicose_veins",
@@ -478,7 +498,7 @@
         "Systolic Blood Pressure": "sys_bp",
         "Diastolic Blood Pressure": "dia_bp",
         "DOPamine": "dopamine",
-        "DOBUTamine": "doboutamine",
+        "DOBUTamine": "dobutamine",
         "norEPINEPHrine": "norepinephrine",
         "EPINEPHrine": "epinephrine",
         "creatinine": "creatinine",
@@ -497,20 +517,23 @@
         "explanation function": "compute_ldl_explanation",
         "calculator name": "LDL Calculated",
         "type": "lab test",
-        "question": "What is the patient's LDL cholestrol concentration? Please outuput your answer in terms of mg/dL."
+        "question": "What is the patient's LDL cholestrol concentration? Please outuput your answer in terms of mg/dL. Note: Friedewald is not validated for triglycerides >= 400 mg/dL."
     },
     "45": {
         "age": "age",
         "Systolic Blood Pressure": "sys_bp",
         "Diastolic Blood Pressure": "dia_bp",
         "Blood Urea Nitrogen (BUN)": "bun",
+        "BUN (mmol/L)": "bun",
+        "Urea": "bun",
+        "Urea (mmol/L)": "bun",
         "respiratory rate": "respiratory_rate",
         "Confusion": "confusion",
         "file path": "curb_65.py",
         "explanation function": "curb_65_explanation",
         "calculator name": "CURB-65 Score for Pneumonia Severity",
         "type": "risk",
-        "question": "What is the patient's CURB-65 score?"
+        "question": "What is the patient's CURB-65 score? If BUN is given in mmol/L, treat it as urea mmol/L."
     },
     "46": {
         "sex": "sex",
@@ -574,6 +597,7 @@
     "57": {
         "Heart Rate or Pulse": "heart_rate",
         "QT Interval": "qt_interval",
+        "QT Interval (msec)": "qt_interval",
         "file path": "qt_calculator_framingham.py",
         "explanation function": "framingham_calculator_explanation",
         "calculator name": "QTc Framingham Calculator",
@@ -592,6 +616,7 @@
     "59": {
         "Heart Rate or Pulse": "heart_rate",
         "QT Interval": "qt_interval",
+        "QT Interval (msec)": "qt_interval",
         "file path": "qt_calculator_rautaharju.py",
         "explanation function": "rautaharju_calculator_explanation",
         "calculator name": "QTc Rautaharju Calculator",

@@ -15,10 +15,15 @@ def compute_has_bled_score_explanation(input_variables):
 9. Alcohol use (≥8 drinks/week): No = 0 points, Yes = +1 point
 
 The total HAS-BLED score is calculated by summing the points for each criterion.
+Note: Labile INR applies to warfarin users; it is not applicable to patients on DOACs.
     """
    
     has_bled_score = 0
-    num_alcolic_drinks = int(float(input_variables["alcoholic_drinks"]))
+    raw_drinks = input_variables.get("alcoholic_drinks", 0)
+    try:
+        num_alcolic_drinks = int(float(raw_drinks))
+    except (TypeError, ValueError):
+        num_alcolic_drinks = 0
     explanation += f"\nThe current HAS-BLED score is 0.\n"
 
     age_explanation, age_value = age_conversion.age_conversion_explanation(input_variables["age"])

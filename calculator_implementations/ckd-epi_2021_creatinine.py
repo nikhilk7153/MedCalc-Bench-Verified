@@ -18,6 +18,7 @@ def ckd_epi_2021_explanation(input_parameters):
     explanation += age_explanation
     explanation += f"The patient's gender is {gender}, "
 
+    # Sex-specific coefficient per CKD-EPI 2021 (female multiplier 1.012).
     if gender == "Female":
         gender_coefficient = 1.012 
         explanation += f"and so the patient's gender coefficient is {gender_coefficient}.\n"
@@ -26,10 +27,13 @@ def ckd_epi_2021_explanation(input_parameters):
         explanation += f"and so the patient's gender coefficient is {gender_coefficient}.\n"
 
     creatinine_val, creatinine_label = input_parameters["creatinine"][0], input_parameters["creatinine"][1]
+    # Creatinine is normalized to mg/dL before applying the threshold logic.
     creatinine_val_exp, creatinine_val = unit_converter_new.conversion_explanation(creatinine_val, "Serum Creatinine", 113.12, None, creatinine_label, "mg/dL")
 
     explanation += creatinine_val_exp
 
+    # CKD-EPI 2021 uses sex-specific thresholds (0.7 female, 0.9 male).
+    # Thresholds differ by sex (0.7 female, 0.9 male) and select the exponent.
     if creatinine_val <= 0.7 and gender == "Female":
         explanation += f"Because the patient's gender is female and the creatinine concentration is less than or equal to 0.7 mg/dL, A = 0.7 and B = -0.241.\n"
         a = 0.7
@@ -37,7 +41,7 @@ def ckd_epi_2021_explanation(input_parameters):
 
     elif creatinine_val <= 0.9 and gender == "Male":
         explanation += f"Because the patient's gender is male and the creatinine concentration is less than or equal to 0.9 mg/dL, A = 0.9 and B = -0.302.\n"
-        a = 0.7
+        a = 0.9
         b = -0.302
 
     elif creatinine_val > 0.7 and gender == "Female":
@@ -46,7 +50,7 @@ def ckd_epi_2021_explanation(input_parameters):
         b = -1.2
 
     elif creatinine_val > 0.9 and gender == "Male":
-        explanation += f"Because the patient's gender is male and the creatinine concentration is greater than or equal to 0.9 mg/dL, A = 0.9 and B = -1.2.\n"
+        explanation += f"Because the patient's gender is male and the creatinine concentration is greater than 0.9 mg/dL, A = 0.9 and B = -1.2.\n"
         a = 0.9
         b = -1.2
 
@@ -54,7 +58,8 @@ def ckd_epi_2021_explanation(input_parameters):
     result = round_number(142 * (creatinine_val/a)**b * 0.9938**age * gender_coefficient)
 
     explanation += f"Plugging in these values, we get 142 * ({creatinine_val}/{a})**{b} * {0.9938}**{age} * {gender_coefficient} = {result}.\n"
-    explanation += f"Hence, the GFR value is {result} ml/min/1.73 m²."
+    explanation += f"Hence, the GFR value is {result} ml/min/1.73 m². "
+    explanation += "Note: The 2021 CKD-EPI creatinine equation is validated for adults and reports an indexed eGFR (mL/min/1.73 m²), not a drug-dosing creatinine clearance."
 
     return {"Explanation": explanation, "Answer": result}
  

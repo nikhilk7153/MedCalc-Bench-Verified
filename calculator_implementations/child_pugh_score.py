@@ -18,6 +18,7 @@ Grade 3: somnolent, stuporous, place-disoriented, hyperactive reflexes, rigidity
 Grade 4: unrousable coma, no personality/behavior, decerebrate, slow 2-3 cps delta activity)
 
 The Child-Pugh Score is calculated by summing the points for each criterion.
+Note: Ensure units are correct (bilirubin mg/dL or µmol/L, albumin g/dL or g/L).
 """
 
     explanation += "\nThe current child pugh score is 0.\n"
@@ -103,5 +104,4 @@ The Child-Pugh Score is calculated by summing the points for each criterion.
     explanation += f"The patient's child pugh score is {cp_score}."
 
     return {"Explanation": explanation, "Answer": cp_score}
-
 

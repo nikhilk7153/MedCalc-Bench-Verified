@@ -12,6 +12,7 @@ def bmi_calculator_explanation(input_variables):
 
     output += height_explanation
     output += weight_explanation
+    # BMI uses meters for height; square height before dividing weight (kg).
     result = round_number(weight/(height * height))
     output += f"The patient's bmi is therefore {weight} kg / ({height} m * {height} m) = {result} kg/m^2."
 

@@ -26,7 +26,8 @@ def add_40_weeks_explanation(input_data):
         future_date = future_date + timedelta(days=cycle_length_gap)
         explanation += f"Because the patient's cycle length is {cycle_length} days, this means that we must add {cycle_length_gap} days to the patient's estimate due date. Hence, the patient's estimated due date is {future_date.strftime('%m/%d/%Y')}."
 
-    return {"Explanation": explanation, "Answer": future_date.strftime('%m/%d/%Y')}
+    explanation += " Note: First-trimester ultrasound dating is more accurate than Naegele's rule and should be used when available."
 
+    return {"Explanation": explanation, "Answer": future_date.strftime('%m/%d/%Y')}
 
 

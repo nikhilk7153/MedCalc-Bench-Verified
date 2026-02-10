@@ -6,6 +6,7 @@ def targetweight_explanation(input_variables):
 
     bmi  = input_variables["body_mass_index"][0]
     height_exp, height = height_conversion.height_conversion_explanation(input_variables["height"])
+    # BMI is kg/m^2 and height is in meters, so multiply by height squared.
     target_weight_val = round_number(bmi * (height * height))
 
     explanation = "The formula for calculating the target weight is bmi * height^2, where bmi is in kg/m^2 and height is in meters. "
@@ -17,4 +18,3 @@ def targetweight_explanation(input_variables):
     explanation += f"From this, the patient's target weight is {bmi} kg/m^2 * {height} m * {height} m = {target_weight_val} kg. "
    
     return {"Explanation": explanation, "Answer": target_weight_val}
-

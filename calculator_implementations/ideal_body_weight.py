@@ -9,6 +9,7 @@ def ibw_explanation(input_variables):
     explanation = (f"For males, the ideal body weight (IBW) is calculated as follows: IBW = 50 kg + 2.3 kg * (height (in inches) - 60)\n")
     explanation += (f"For females, the ideal body weight (IBW) is calculated as follows: 45.5 kg + 2.3 kg * (height (in inches) - 60)\n")
 
+    # IBW formulas use inches; convert height to inches before applying 50/45.5 baseline.
     height_explanation, height = height_conversion.height_conversion_explanation_in(input_variables["height"])
 
     explanation += f"The patient's gender is {gender}.\n"
@@ -25,6 +26,5 @@ def ibw_explanation(input_variables):
     explanation += f"Hence, the patient's IBW is {ibw} kg."
     
     return {"Explanation": explanation, "Answer": ibw}
-
 
 

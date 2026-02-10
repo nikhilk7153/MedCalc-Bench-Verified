@@ -35,11 +35,12 @@ def mrdr_gfr_explanation(input_variables):
     else:
         explanation += "The patient is male, so the gender coefficient is 1.\n"
 
+    # Use exp(log(x) * p) to express fractional powers with float inputs.
     gfr = round_number(175 * math.exp(math.log(creatinine_conc) * -1.154) * math.exp(math.log(age) * -0.203) * race_coefficient * gender_coefficient)
 
 
     explanation += (f"Plugging in these values will give us: 175 * {creatinine_conc}^(-1.154) * {age}^(-0.203) * {race_coefficient} * {gender_coefficient}={gfr}.\n"
-                    f"Hence, the patient's GFR is {gfr} mL/min/1.73m².")
+                    f"Hence, the patient's GFR is {gfr} mL/min/1.73m². ")
+    explanation += "Note: MDRD is a legacy equation and uses a race coefficient when provided; many labs have moved to race-free CKD-EPI 2021."
 
     return {"Explanation": explanation, "Answer": gfr}
-

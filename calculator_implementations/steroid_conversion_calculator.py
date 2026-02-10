@@ -54,3 +54,6 @@ def compute_steroid_conversion_explanation(input_parameters):
 
     return {"Explanation": explanation, "Answer": converted_amount}
 
+
+def compute_steroid_conversion(input_parameters):
+    return compute_steroid_conversion_explanation(input_parameters)["Answer"]

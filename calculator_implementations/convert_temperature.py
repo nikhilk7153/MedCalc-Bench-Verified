@@ -5,6 +5,7 @@ def fahrenheit_to_celsius_explanation(temperature, units):
     if units == "degrees celsius":
         return f"The patient's temperature is {temperature} degrees celsius. ", temperature
     
+    # Convert Fahrenheit to Celsius before applying thresholds.
     celsius = round_number((temperature - 32) * 5/9)
 
     explanation = f"The patient's temperature is {temperature} degrees fahrenheit. "

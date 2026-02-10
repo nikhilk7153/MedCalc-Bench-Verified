@@ -15,7 +15,7 @@ def compute_perc_rule_explanation(input_parameters):
 7. Prior pulmonary embolism (PE) or deep vein thrombosis (DVT): No = 0 points, Yes = +1 point
 8. Hormone use (oral contraceptives, hormone replacement, or estrogenic hormone use in males or females): No = 0 points, Yes = +1 point
 
-The total number of criteria met is taken by summing the points for each criterion.
+PERC is negative only when all criteria are negative (0 points). It is intended for use only when clinical pre-test probability for PE is low.
     """
     
 

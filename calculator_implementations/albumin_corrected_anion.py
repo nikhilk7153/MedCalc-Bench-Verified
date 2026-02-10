@@ -14,11 +14,13 @@ def compute_albumin_corrected_anion_explanation(input_parameters):
 
     explanation += albumin_exp
 
+    # Correct to a 4 g/dL albumin baseline using 2.5 mEq/L per 1 g/dL.
     anion_gap_val = anion_gap_data["Answer"]
     answer = anion_gap_val + 2.5 * (4 - albumin) 
     final_answer = round_number(answer)
 
     explanation += f"Plugging in these values into the albumin corrected anion gap formula, we get {anion_gap_val} (mEq/L) + 2.5 * (4 - {albumin} (in g/dL)) = {final_answer} mEq/L. "
-    explanation += f"Hence, the patient's albumin corrected anion gap is {final_answer} mEq/L."
+    explanation += f"Hence, the patient's albumin corrected anion gap is {final_answer} mEq/L. "
+    explanation += "Note: This correction assumes albumin is in g/dL and uses a baseline of 4 g/dL."
 
     return {"Explanation": explanation, "Answer": final_answer}

@@ -12,6 +12,7 @@ def maintenance_fluid_explanation(input_parameters):
 
     explanation += weight_exp
 
+    # 4-2-1 maintenance rule by weight band (per hour).
     if weight < 10:
         answer = round_number(weight * 4)
         explanation += f"Hence, the patient's maintenance fluid is {weight} kg * 4 mL/kg/hr = {answer} mL/hr.\n"
@@ -25,6 +26,5 @@ def maintenance_fluid_explanation(input_parameters):
     explanation += f"Hence, the patient's fluid maintenance is {answer} mL/hr."
 
     return {"Explanation": explanation, "Answer": answer}
-
 
 

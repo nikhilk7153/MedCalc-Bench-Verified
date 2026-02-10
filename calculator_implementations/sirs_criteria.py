@@ -21,6 +21,13 @@ The total number of criteria met is taken by summing the score for each criteria
     temp_exp, temperature = convert_temperature.fahrenheit_to_celsius_explanation(temperature[0], temperature[1])
     heart_rate = input_parameters["heart_rate"][0]
     wbc_exp, wbc = unit_converter_new.convert_to_units_per_liter_explanation(input_parameters["wbc"][0], input_parameters["wbc"][1], "white blood cell", "mm^3")
+    bands_value = None
+    if "bands" in input_parameters:
+        bands = input_parameters["bands"]
+        bands_value = bands[0] if isinstance(bands, (list, tuple)) else bands
+        explanation += f"The patient's band neutrophils are {bands_value}%. "
+    else:
+        explanation += "The patient's band neutrophils are not provided. "
 
     criteria_met = 0
 
@@ -51,8 +58,11 @@ The total number of criteria met is taken by summing the score for each criteria
     elif wbc < 4000:
         explanation += f"Because the white blood cell count is less than 4000 count per mm^3, we increment the criteria count by 1 making the current total {criteria_met} + 1 = {criteria_met + 1}.\n"
         criteria_met += 1
+    elif bands_value is not None and bands_value > 10:
+        explanation += f"Because the band neutrophils are greater than 10%, we increment the criteria count by 1 making the current total {criteria_met} + 1 = {criteria_met + 1}.\n"
+        criteria_met += 1
     else:
-        explanation += f"Because the white blood cell count is between 4000 and 12000 count per mm^3, this does not meet SIRS criteria for white blood cell count, and so the current total remains at {criteria_met}.\n"
+        explanation += f"Because the white blood cell count is between 4000 and 12000 count per mm^3 and bands are not elevated, this does not meet SIRS criteria for white blood cell count, and so the current total remains at {criteria_met}.\n"
 
     explanation += "The final SIRS criteria is whether the patient has a respiratory rate of more than 20 breaths per minute or if the patient's PaCO₂ partial pressure is less than 32 mm Hg. "
 
@@ -84,6 +94,9 @@ The total number of criteria met is taken by summing the score for each criteria
         elif paco2 > 32:
             res += f"which is greater or equal to than 32 mm Hg. "
             paco2_met = False
+        else:
+            res += f"which is equal to 32 mm Hg. "
+            paco2_met = False
         
         explanation += res
     else:
@@ -100,4 +113,3 @@ The total number of criteria met is taken by summing the score for each criteria
 
     return {"Explanation": explanation, "Answer": criteria_met}
      
-

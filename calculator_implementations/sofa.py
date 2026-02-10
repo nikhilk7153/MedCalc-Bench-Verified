@@ -20,14 +20,25 @@ The total SOFA Score is calculated by summing the points for each criterion.
     sofa_score = 0
 
     pao2 = input_parameters["pao2"][0]
-    fio2 = input_parameters["fio2"][0]
+    fio2_raw = input_parameters["fio2"][0]
+    fio2 = fio2_raw
 
     dopamine = input_parameters.get("dopamine", [0])
     dobutamine = input_parameters.get("dobutamine", [0])
     epinephrine = input_parameters.get("epinephrine", [0])
     norepinephrine = input_parameters.get("norepinephrine", [0])
 
-    explanation += f"The patient's partial pressure of oxygen is {pao2} mm Hg and FiO₂ percentage is {fio2} %. "
+    # Respiratory component is driven by PaO2/FiO2 ratio and ventilation status.
+    if fio2_raw <= 1:
+        fio2 = round_number(fio2_raw * 100)
+        explanation += f"The patient's FiO₂ is provided as a fraction ({fio2_raw}), which corresponds to {fio2} %. "
+    elif fio2_raw > 100:
+        explanation += f"The patient's FiO₂ percentage is {fio2_raw} %, which is above the expected 0-100% range; we will use the provided value. "
+    else:
+        explanation += f"The patient's FiO₂ percentage is {fio2} %. "
+
+    explanation += f"The patient's partial pressure of oxygen is {pao2} mm Hg. "
+    # FiO2 is a percent; convert to fraction before computing ratio.
     ratio = round_number(pao2/(fio2/100))
     explanation += f"This means that the patient's partial pressure of oxygen to FiO₂ ratio is {ratio}. "
 
@@ -48,6 +59,7 @@ The total SOFA Score is calculated by summing the points for each criterion.
     else:
         explanation += "The patient is reported to not be using continuous positive airway pressure. "
 
+    # Apply SOFA respiratory thresholds for ratio bands and ventilation support.
     if ratio >= 400:
         explanation += f"Because the patient's partial pressure of oxygen to FiO₂ ratio is at least 400, we do not add any points to the score, keeping the current total at {sofa_score}.\n"
     elif 300 <= ratio < 400:
@@ -56,10 +68,10 @@ The total SOFA Score is calculated by summing the points for each criterion.
     elif 200 <= ratio < 300:
         explanation += f"Because the patient's partial pressure of oxygen to FiO₂ ratio is between 200 and 300, we increase the score by two points, makeing the current total {sofa_score} + 2 = {sofa_score + 2}.\n"
         sofa_score += 2
-    elif ratio <= 199 and (("mechanical_ventillation" not in input_parameters and "cpap" not in input_parameters) or (not input_parameters["mechanical_ventilation"] and not input_parameters["cpap"])):
+    elif ratio < 200 and (not input_parameters["mechanical_ventilation"] and not input_parameters["cpap"]):
         explanation += f"Because the patient's partial pressure of oxygen to FiO₂ ratio is less than 200, the patient is not on mechanical ventillation and is not using continious positive airway pressure, we increase the score by two points, making the current total {sofa_score} + 2 = {sofa_score + 2}.\n"
         sofa_score += 2
-    elif 100 <= ratio < 199 and (input_parameters["mechanical_ventilation"] or input_parameters["cpap"]):
+    elif 100 <= ratio < 200 and (input_parameters["mechanical_ventilation"] or input_parameters["cpap"]):
         explanation += f"Because the patient's partial pressure of oxygen to FiO₂ ratio is between 100 to 199, and the patient is using at least one of (i) mechanical ventillation or (ii) continious positive airway pressure, we increase the score by three points, makeing the current total {sofa_score} + 3 = {sofa_score + 3}.\n"
         sofa_score += 3
     elif ratio < 100 and (input_parameters["mechanical_ventilation"] or input_parameters["cpap"]):
@@ -67,6 +79,7 @@ The total SOFA Score is calculated by summing the points for each criterion.
         sofa_score += 4
 
 
+    # Vasopressor scoring is based on highest-dose category reached.
     if (dopamine[0] > 15 or epinephrine[0] > 0.1 or norepinephrine[0] > 0.1):
         explanation += f"For four points to be given, the patient must be taking more than 15 micrograms/kg/min, more than 0.1 micrograms/kg/min of epinephrine, or more than 0.1 micrograms/kg/min of norepinephrine. Because at least one of these cases is true for the patient, we increment the score by four points, making the current total {sofa_score} + 4 = {sofa_score + 4}.\n"
         sofa_score += 4
@@ -80,13 +93,16 @@ The total SOFA Score is calculated by summing the points for each criterion.
         sys_bp = input_parameters['sys_bp'][0]
         dia_bp = input_parameters['dia_bp'][0]
         map = round_number(1/3 * sys_bp + 2/3 * dia_bp)
-        explanation = f"The patient's systolic blood pressure is {sys_bp} mm Hg and the patient's diastolic blood pressure is {dia_bp} mm Hg, making the patient's mean arterial blood pressure {map} mm Hg. "
+        explanation += f"The patient's systolic blood pressure is {sys_bp} mm Hg and the patient's diastolic blood pressure is {dia_bp} mm Hg, making the patient's mean arterial blood pressure {map} mm Hg. "
         explanation += f"For one point to be given, the patient's mean arterial pressure must be less than 70 mm Hg, making the current total {sofa_score} + 1 = {sofa_score + 1}.\n"
         sofa_score += 1
     elif 'hypotension' not in input_parameters:
         explanation += f"Whether the patient has hypotension is not reported, and so we do not add any points to the score, keeping the current total at {sofa_score}.\n"
     elif not input_parameters['hypotension']:
         explanation += f"The patient is reported to not have hypotension, and so we do not add any points to the score, keeping the current total at {sofa_score}.\n"
+    else:
+        explanation += f"The patient is reported to have hypotension, so we add one point, making the current total {sofa_score} + 1 = {sofa_score + 1}.\n"
+        sofa_score += 1
 
     if 'gcs' in input_parameters:
         gcs = input_parameters["gcs"]
@@ -159,12 +175,12 @@ The total SOFA Score is calculated by summing the points for each criterion.
         explanation += f"The patients urine output is {urine_output} mL/day.\n\n"
         
         
-    if creatinine > 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 200):
-        explanation += f"For four points to be given, either the patient's creatinine clearance must be greater than 5.0 mg/dL or the patient's urine output is less than 200 mL/day. Because at least one of these statemets is true, we increment the score by four points, making the current total {sofa_score} + 4 = {sofa_score + 4}.\n"
+    if creatinine >= 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 200):
+        explanation += f"For four points to be given, either the patient's creatinine clearance must be at least 5.0 mg/dL or the patient's urine output is less than 200 mL/day. Because at least one of these statemets is true, we increment the score by four points, making the current total {sofa_score} + 4 = {sofa_score + 4}.\n"
         sofa_score += 4
-    elif 3.5 <= creatinine <= 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 500):
-            explanation += f"For three points to be given, either the patient's creatinine clearance must be between 3.5 mg/dL or 5.0 mg/dL or the patient's urine output is less than 500 mL/day. Because at least one of these statemets is true, we increment the score by three points, making the current total {sofa_score} + 3 = {sofa_score + 3}.\n"
-            sofa_score += 3
+    elif 3.5 <= creatinine < 5.0 or ('urine_output' in input_parameters and input_parameters['urine_output'][0] < 500):
+        explanation += f"For three points to be given, either the patient's creatinine clearance must be between 3.5 mg/dL and 5.0 mg/dL or the patient's urine output is less than 500 mL/day. Because at least one of these statemets is true, we increment the score by three points, making the current total {sofa_score} + 3 = {sofa_score + 3}.\n"
+        sofa_score += 3
     elif 2.0 <= creatinine < 3.5:
             explanation += f"Because the patient's creatinine concentration is at least 2.0 mg/dL, but less than 3.5 mg/dL, we increment the score by two points, making the current total {sofa_score} + 2 = {sofa_score + 2}.\n"
             sofa_score += 2
@@ -178,5 +194,3 @@ The total SOFA Score is calculated by summing the points for each criterion.
     explanation += f"Hence, the patient's SOFA score is {sofa_score} points."
 
     return {"Explanation": explanation, "Answer": sofa_score}
-
-

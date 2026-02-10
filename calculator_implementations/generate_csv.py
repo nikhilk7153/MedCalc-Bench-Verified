@@ -6,10 +6,14 @@ import json
 import importlib.util
 import ast 
 
-with open("/Users/nikhilkhandekar/Documents/MedCalc-Bench-Verified/calculator_implementations/name_to_python.json") as file:
+# Get the directory where this script is located
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
+
+with open(os.path.join(SCRIPT_DIR, "name_to_python.json"), "r") as file:
     calc_info = json.load(file)
 
-df_test = pd.read_csv("datasets/one_shot_data.csv")
+df_test = pd.read_csv(os.path.join(PROJECT_ROOT, "datasets", "one_shot_data.csv"))
 
 
 csv_props = {"Row Number": [], "Calculator ID": [], "Calculator Name": [], "Category": [], "Output Type": [], "Note ID": [], "Note Type": [], 
@@ -108,7 +112,7 @@ for index, row in df_test.iterrows():
     
     # If file_path is relative, make it absolute by joining with calculator_implementations directory
     if not os.path.isabs(file_path):
-        file_path = os.path.join(os.path.dirname(__file__), file_path)
+        file_path = os.path.join(SCRIPT_DIR, file_path)
     
     # Get just the filename without path and extension
     file_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -163,7 +167,7 @@ for index, row in df_test.iterrows():
   
 
 df_output = pd.DataFrame(csv_props)
-df_output.to_csv("datasets/one_shot_data.csv", index=False)
+df_output.to_csv(os.path.join(PROJECT_ROOT, "datasets", "one_shot_data.csv"), index=False)
 
 
 

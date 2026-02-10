@@ -14,14 +14,15 @@ def abw_explanation(input_variables):
 
     ibw = ibw_explanation["Answer"]
         
+    # Adjusted body weight uses a 0.4 correction toward actual weight.
     abw = round_number(ibw + 0.4 * (weight - ibw))
     abw_explanation_string = ""
     abw_explanation_string += f"To compute the ABW value, apply the following formula: "
     abw_explanation_string += f"ABW = IBW + 0.4 * (weight (in kg) - IBW (in kg)). "
     abw_explanation_string += f"ABW = {ibw} kg + 0.4 * ({weight} kg  - {ibw} kg) = {abw} kg. "
-    abw_explanation_string += f"The patient's adjusted body weight is {abw} kg."
+    abw_explanation_string += f"The patient's adjusted body weight is {abw} kg. "
+    abw_explanation_string += "Note: The 0.4 adjustment factor is a common convention, but some institutions use different factors."
 
     explanation += abw_explanation_string
 
     return {"Explanation": explanation, "ABW": abw_explanation_string, "Answer": abw}
-

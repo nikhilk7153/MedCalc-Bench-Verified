@@ -3,7 +3,7 @@ from rounding import round_number
 
 def calculate_corrected_calcium_explanation(params):
 
-    # Extract parameters from the input dictionary
+    # Extract parameters from the input dictionary (albumin baseline is 4.0 g/dL).
     normal_albumin = 4.0  # Normal albumin level in g/dL
     
     albumin = params.get('albumin')
@@ -31,7 +31,8 @@ def calculate_corrected_calcium_explanation(params):
     output += f"(0.8 * ({normal_albumin} g/dL - {albumin} g/dL)) + {calcium} mg/dL = {corrected_calcium} mg/dL.\n"
 
 
-    output += f"The patient's corrected calcium concentration {corrected_calcium} mg/dL."
+    output += f"The patient's corrected calcium concentration {corrected_calcium} mg/dL. "
+    output += "Note: Corrected calcium formulas can be unreliable; ionized calcium is preferred when clinical decisions depend on accuracy."
 
     return {"Explanation": output, "Answer": corrected_calcium}
 

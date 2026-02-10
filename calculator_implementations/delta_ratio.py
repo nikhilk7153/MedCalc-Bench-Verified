@@ -15,6 +15,7 @@ def compute_delta_ratio_explanation(input_parameters):
     delta_gap_val = delta_gap_resp["Answer"]
 
     explanation += f"{delta_gap_resp['Explanation']}"
+    explanation += f"{bicarbonate_exp}"
 
     answer = round_number(delta_gap_resp['Answer']/(24 - bicarbonate_val))
 
@@ -23,4 +24,3 @@ def compute_delta_ratio_explanation(input_parameters):
     explanation += f"The patient's delta ratio is {answer}."
 
     return {"Explanation": explanation, "Answer": answer}
-

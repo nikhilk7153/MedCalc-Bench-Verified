@@ -13,6 +13,10 @@ def compute_ldl_explanation(input_parameters):
     explanation += hdl_cholestrol_exp + '\n'
     explanation += triglycerides_exp +  '\n'
 
+    if triglycerides >= 400:
+        explanation += "Warning: The Friedewald formula is not validated when triglycerides are >= 400 mg/dL; any calculated LDL is unreliable.\n"
+
+    # Friedewald formula uses triglycerides/5 when inputs are in mg/dL.
     answer = round_number(total_cholestrol - hdl_cholestrol - (triglycerides/5))
 
     explanation += f"Plugging in these values will give us {total_cholestrol} mg/dL - {hdl_cholestrol} mg/dL - ({triglycerides}/5) mg/dL = {answer} mg/dL.\n"
@@ -20,4 +24,3 @@ def compute_ldl_explanation(input_parameters):
     explanation += f"The patients concentration of LDL cholestrol is {answer} mg/dL."
 
     return {"Explanation": explanation, "Answer": answer}
-

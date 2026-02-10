@@ -48,7 +48,7 @@ def framingham_risk_score_explanation(input_parameters):
     hdl_cholesterol = input_parameters["hdl_cholesterol"]
     sys_bp = input_parameters["sys_bp"][0]
 
-    total_cholesterol_exp, total_cholesterol = unit_converter_new.conversion_explanation(total_cholesterol[0], 386.654, "total cholesterol", None, total_cholesterol[1], "mg/dL")
+    total_cholesterol_exp, total_cholesterol = unit_converter_new.conversion_explanation(total_cholesterol[0], "total cholesterol", 386.654, None, total_cholesterol[1], "mg/dL")
     hdl_cholesterol_exp, hdl_cholesterol = unit_converter_new.conversion_explanation(hdl_cholesterol[0], "hdl cholesterol", 386.654, None, hdl_cholesterol[1], "mg/dL")
 
     explanation += total_cholesterol_exp
@@ -121,5 +121,4 @@ def framingham_risk_score_explanation(input_parameters):
     explanation += f"Hence, the patient's 10-year risk percentage of MI or death is {risk_percentage:.3f}%."
     
     return {"Explanation": explanation, "Answer": round(risk_percentage, 3)}
-
 

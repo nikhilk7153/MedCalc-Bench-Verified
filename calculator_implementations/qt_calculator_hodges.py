@@ -9,6 +9,7 @@ def hodges_calculator_explanation(input_variables):
     explanation += f"The patient's heart rate is {heart_rate} beats per minute.\n"
     explanation += f"The QT interval is {qt_interval} msec.\n"
 
+    # RR interval is rounded to keep consistency across QT calculators.
     rr_interval_sec =  round_number(60 / heart_rate)
     explanation += f"The RR interval is computed as 60/(heart rate), and so the RR interval is 60/{heart_rate} = {rr_interval_sec}.\n"
 

@@ -54,7 +54,7 @@ The total score is calculated by summing the points for each criterion.
                         input_parameters[item] = False
 
             missing_factors = [factor for factor in options.keys() if factor not in input_parameters]
-            missing_factors_names = [factor_name[factor] for factor in options.keys() if factor in input_parameters and not input_parameters[factor]]
+            missing_factors_names = [factor_name[factor] for factor in missing_factors]
 
             if missing_factors:
                 explanation += f"The following risk factor(s) are missing from the patient's data: {', '.join(missing_factors_names)}. We will assume that these are all absent from the patient. "
@@ -89,15 +89,12 @@ The total score is calculated by summing the points for each criterion.
 
             if risk_factors_count == 0:
                 explanation += f"0 points are added for the risk factors criteria, keeping the current total at {total_score}.\n"
-            elif 1 <= risk_factors_count <= 2:
+            elif input_parameters['atherosclerotic_disease'] or risk_factors_count >= 3:
+                explanation += f"2 points are added for the risk factors criteria (≥3 risk factors or atherosclerotic disease present), making the current total {total_score} + 2 = {total_score + 2}.\n"
+                total_score += 2
+            else:
                 explanation += f"1 point is added for the risk factors criteria, making the current total, {total_score} + 1 = {total_score + 1}.\n"
                 total_score += 1
-            elif risk_factors_count < 3 and input_parameters['atherosclerotic_disease']:
-                explanation += f"2 points are added for the risk factors criteria as atherosclerotic disease is present, making the current total {total_score} + 2 = {total_score + 2}.\n"
-                total_score += 2
-            elif risk_factors_count >= 3:
-                explanation += f"2 points are added as 3 or more risk factors are present, making the current total {total_score} + 2 = {total_score + 2}.\n"
-                total_score += 2
 
         elif param == "age":
             if age < 45:

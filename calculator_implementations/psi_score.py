@@ -6,18 +6,26 @@ import convert_temperature
 
 def psi_score_explanation(input_variables):
 
+    # Normalize age first so the base PSI score is consistent across units.
     age = age_conversion.age_conversion(input_variables["age"])
     gender = input_variables["sex"]
     pulse = input_variables["heart_rate"][0]
+    # PSI temperature thresholds are defined in Celsius; always convert before scoring.
     temperature_exp, temperature = convert_temperature.fahrenheit_to_celsius_explanation(input_variables["temperature"][0], input_variables["temperature"][1])
     pH = input_variables["pH"]
     respiratory_rate = input_variables["respiratory_rate"][0]
     sys_bp = input_variables["sys_bp"][0]
+    # Normalize inputs to the units used by PSI thresholds.
+    # BUN thresholds are in mg/dL; convert if necessary (mmol/L treated as urea).
     bun_exp, bun = unit_converter_new.conversion_explanation(input_variables["bun"][0], 'BUN', 28.02, None, input_variables["bun"][1], "mg/dL")
+    # Sodium thresholds are in mmol/L; convert from mEq/L when needed.
     sodium_exp, sodium = unit_converter_new.conversion_explanation(input_variables["sodium"][0], "sodium", 22.99, 1, input_variables["sodium"][1], "mmol/L")
+    # Glucose thresholds are in mg/dL; convert from mmol/L if provided.
     glucose_exp, glucose = unit_converter_new.conversion_explanation(input_variables["glucose"][0], "glucose", 180.16, None, input_variables["glucose"][1], "mg/dL")
     hematocrit = input_variables["hematocrit"][0]
+    # Optional oxygenation inputs may be provided in mm Hg, kPa, or O2 saturation.
     partial_pressure_oxygen = input_variables.get("partial_pressure_oxygen")
+    oxygen_sat = input_variables.get("oxygen_sat")
 
     explanation = """The rules for computing the Pneumonia Severity Index (PSI) are shown below:
 
@@ -43,6 +51,7 @@ def psi_score_explanation(input_variables):
 20. Pleural effusion on x-ray: No = 0 points, Yes = +10 points
 
 The total score is calculated by summing the points for each criterion.
+Note: PSI Class I is rule-based (not point-based). This calculator outputs the point total only.
 """
 
 
@@ -167,27 +176,37 @@ The total score is calculated by summing the points for each criterion.
         explanation += f"The patient's hematocrit is greater than or equal to 30%, and so we not add any points to the current total, keeping it at {psi_score}.\n"
 
 
-    if partial_pressure_oxygen[1] == "mm Hg":
+    # PSI uses different cutoffs depending on whether PaO2 is in mm Hg or kPa.
+    if partial_pressure_oxygen is None and oxygen_sat is None:
+        explanation += f"The patient's oxygenation is not provided; we do not add any points for this criterion, keeping the total at {psi_score}.\n"
+    elif partial_pressure_oxygen is not None and partial_pressure_oxygen[1] == "mm Hg":
         explanation += f"The patient's partial pressure of oxygen is {partial_pressure_oxygen[0]} mm Hg. "
 
         if partial_pressure_oxygen[0] < 60:
-            explanation += f"The patient's partial pressure of oxygen is less than 60 mm Hg, and so we add {psi_score} points to the score, making the current total {psi_score} + 10 = {psi_score + 10}.\n"
+            explanation += f"The patient's partial pressure of oxygen is less than 60 mm Hg, and so we add 10 points to the score, making the current total {psi_score} + 10 = {psi_score + 10}.\n"
             psi_score += 10
         else:
             explanation += f"The patient's partial pressure of oxygen is greater than or equal to 60 mm Hg, and so we not add any points to the current total, keeping it at {psi_score}.\n"
 
 
-    elif partial_pressure_oxygen[1] == "kPa":
+    elif partial_pressure_oxygen is not None and partial_pressure_oxygen[1] == "kPa":
         explanation += f"The patient's partial pressure of oxygen is {partial_pressure_oxygen[0]} kPa. "
 
         
         if partial_pressure_oxygen[0] < 8:
-            explanation += f"The patient's partial pressure of oxygen is less than 8 kPa, and so we add {psi_score} points to the score, making the current total {psi_score} + 10 = {psi_score + 10}.\n"
+            explanation += f"The patient's partial pressure of oxygen is less than 8 kPa, and so we add 10 points to the score, making the current total {psi_score} + 10 = {psi_score + 10}.\n"
             psi_score += 10
         else:
             explanation += f"The patient's partial pressure of oxygen is greater than or equal to 8 kPa, and so we not add any points to the current total, keeping it at {psi_score}.\n"
+    elif oxygen_sat is not None:
+        oxygen_sat_value = oxygen_sat[0] if isinstance(oxygen_sat, (list, tuple)) else oxygen_sat
+        explanation += f"The patient's oxygen saturation is {oxygen_sat_value}%. "
+        if oxygen_sat_value < 90:
+            explanation += f"The patient's oxygen saturation is less than 90%, and so we add 10 points to the score, making the current total {psi_score} + 10 = {psi_score + 10}.\n"
+            psi_score += 10
+        else:
+            explanation += f"The patient's oxygen saturation is greater than or equal to 90%, and so we do not add any points to the current total, keeping it at {psi_score}.\n"
 
     explanation += f"The patient's PSI score is {psi_score}."
 
     return {"Explanation": explanation, "Answer": psi_score}
-

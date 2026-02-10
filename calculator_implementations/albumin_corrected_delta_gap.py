@@ -10,6 +10,7 @@ def compute_albumin_corrected_delta_gap_explanation(input_parameters):
 
     explanation += albumin_corrected_resp["Explanation"]
 
+    # Subtract the normal anion gap reference of 12 mEq/L.
     albumin_corrected_val = albumin_corrected_resp["Answer"]
 
     answer = round_number(albumin_corrected_val - 12.0)

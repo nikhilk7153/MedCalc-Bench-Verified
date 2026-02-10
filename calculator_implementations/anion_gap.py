@@ -6,6 +6,7 @@ def compute_anion_gap_explanation(input_parameters):
     explanation = ""
     explanation += "The formula for computing a patient's anion gap is: sodium (mEq/L) - (chloride (mEq/L)+ bicarbonate (mEq/L)).\n"
 
+    # Anion gap uses sodium minus the sum of chloride and bicarbonate.
     sodium = input_parameters["sodium"]
     chloride = input_parameters["chloride"]
     bicarbonate = input_parameters["bicarbonate"]
@@ -25,5 +26,4 @@ def compute_anion_gap_explanation(input_parameters):
     explanation += f"Hence, The patient's anion gap is {answer} mEq/L."
 
     return {"Explanation": explanation, "Answer": answer}
-
 

@@ -28,7 +28,7 @@
         "Calculator ID": 8
     },
     "MDRD GFR Equation": {
-        "File Path": "/calculator_implementations/mdrd_gfr.py",
+        "File Path": "calculator_implementations/mdrd_gfr.py",
         "Calculator ID": 9
     },
     "Ideal Body Weight": {
@@ -95,6 +95,10 @@
         "File Path": "calculator_implementations/glasgow_bleeding_score.py",
         "Calculator ID": 27
     },
+    "Glasgow-Blatchford Bleeding Score (Urea, mmol/L)": {
+        "File Path": "calculator_implementations/glasgow_bleeding_score_urea.py",
+        "Calculator ID": 70
+    },
     "APACHE II Score": {
         "File Path": "calculator_implementations/apache_ii.py",
         "Calculator ID": 28
@@ -144,7 +148,7 @@
         "Calculator ID": 44
     },
     "CURB-65 Score for Pneumonia Severity": {
-        "File Path": "calculator_implementations/curb-65.py",
+        "File Path": "calculator_implementations/curb_65.py",
         "Calculator ID": 45
     },
     "Framingham Risk Score for Hard Coronary Heart Disease": {

@@ -29,6 +29,7 @@ The total APACHE II score is calculated by summing the points for each criterion
     explanation += "\nThe patient's current APACHE II score is 0 points.\n"
     score = 0
 
+    # Normalize lab units before applying APACHE II thresholds.
     sodium_exp, sodium = unit_converter_new.conversion_explanation(input_parameters['sodium'][0], "sodium", 22.99, 1, input_parameters['sodium'][1], "mmol/L")
     pH = input_parameters['pH']
     heart_rate = input_parameters['heart_rate'][0]
@@ -82,6 +83,7 @@ The total APACHE II score is calculated by summing the points for each criterion
     else:
         explanation += f"The patient note does not report any history on immunocompromise and so we assume this to be false. Hence, 0 points are added to the total, keeping the total at {score} points.\n"
     
+    # Oxygenation branch uses A-a gradient when FiO2 >= 50%, otherwise PaO2.
     explanation += f"The patient's FiO2 percentage is {fio2}%.\n"
 
     if fio2 >= 50:
@@ -334,6 +336,20 @@ The total APACHE II score is calculated by summing the points for each criterion
         additional_points = 2
         explanation += f"Because the patient has a chronic renal failure and a creatinine level above 1.5 mg/dL, but less than 2.0 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
         score += additional_points
+    elif 0.6 <= creatinine < 1.5 and (acute_renal_failure or chronic_renal_failure):
+        explanation += (
+            "Because the patient's creatinine level is between 0.6 mg/dL and 1.5 mg/dL, "
+            "no points are added to the score for this component, keeping the current total at "
+            f"{score}.\n"
+        )
+    elif creatinine < 0.6 and acute_renal_failure:
+        additional_points = 4
+        explanation += f"Because the patient has an acute renal failure and a creatinine level below 0.6 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        score += additional_points
+    elif creatinine < 0.6 and chronic_renal_failure:
+        additional_points = 2
+        explanation += f"Because the patient has a chronic renal failure and a creatinine level below 0.6 mg/dL, {additional_points} points are added to the score, making the current total {score} + {additional_points} = {score + additional_points}.\n"
+        score += additional_points
 
 
     if not acute_renal_failure and not chronic_renal_failure:
@@ -408,5 +424,3 @@ The total APACHE II score is calculated by summing the points for each criterion
     score += apache_ii_gcs
 
     return {"Explanation": explanation, "Answer": score}
-
-

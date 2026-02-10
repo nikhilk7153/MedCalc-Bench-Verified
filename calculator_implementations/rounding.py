@@ -12,9 +12,9 @@ def round_number(num):
     if num == 0:
         return 0
         
-    # Get number of significant digits in decimal representation
-    # Using absolute value to handle negative numbers correctly
-    sig_digits = -int(floor(log10(abs(num)))) + 5
+    # Derive significant-digit rounding for very small values.
+    # Using absolute value to handle negative numbers correctly.
+    sig_digits = -int(floor(log10(abs(num)))) + 4
     
     # For larger numbers (>= 0.0001 in absolute value), cap at 5 decimal places
     if abs(num) >= 1e-4:

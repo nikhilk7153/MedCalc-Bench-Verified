@@ -56,6 +56,6 @@
   },
   "outputs": {
     "dedup_results_csv": "REDACTED/evaluation/results/results_oracle_52thinking_v2_incorrect198.csv",
-    "replies_jsonl": "REDACTED/evaluation/results/replies_oracle_52thinking_v2_incorrect198.jsonl"
+    "replies_jsonl": ""
   }
 }

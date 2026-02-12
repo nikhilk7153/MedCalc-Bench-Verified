@@ -5,7 +5,7 @@ def compute_cardiac_index_explanation(input_variables):
     # List of parameters and their default values
     parameters = {
         'elevated_risk_surgery': "an elevated risk surgery",
-        'ischemetic_heart_disease': "a history of ischemetic heart disease",
+        'ischemic_heart_disease': "a history of ischemic heart disease",
         'congestive_heart_failure': "a history of congestive heart failure", 
         'cerebrovascular_disease': "a history of cerebrovascular disease",
         'pre_operative_insulin_treatment': "a pre-operative insulin treatment",
@@ -63,4 +63,3 @@ The total score is calculated by summing the points for each criterion.
     output += f"\nThe cardiac risk index score is {cri}."
 
     return {"Explanation": output, "Answer": cri}
-

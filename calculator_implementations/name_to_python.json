@@ -152,7 +152,7 @@
     "17": {
         "Congestive Heart Failure criteria for the Cardiac Risk Index rule": "congestive_heart_failure",
         "Elevated-risk surgery": "elevated_risk_surgery",
-        "History of ischemic heart disease": "ischemetic_heart_disease",
+        "History of ischemic heart disease": "ischemic_heart_disease",
         "Pre-operative treatment with insulin": "pre_operative_insulin_treatment",
         "Pre-operative creatinine": "pre_operative_creatinine",
         "History of cerebrovascular disease": "cerebrovascular_disease",

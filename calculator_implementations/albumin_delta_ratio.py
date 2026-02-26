@@ -14,7 +14,8 @@ def compute_albumin_delta_ratio_explanation(input_parameters):
 
     albmin_corrected_delta_gap_val = albumin_delta_gap_resp["Answer"]
 
-    explanation += f"{albumin_delta_gap_resp['Explanation']}"
+    explanation += f"{albumin_delta_gap_resp['Explanation']}\n"
+    explanation += f"{bicarbonate_exp}\n"
 
     final_answer = round_number(albumin_delta_gap_resp['Answer']/(24 - bicarbonate_val))
 

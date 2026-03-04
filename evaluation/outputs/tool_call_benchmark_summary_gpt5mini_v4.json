@@ -1,0 +1,30 @@
+{
+  "num_sampled_rows": 1100,
+  "samples_per_calculator": 20,
+  "seed": 42,
+  "tolerance": 0.05,
+  "max_workers": 32,
+  "providers": [
+    "openai"
+  ],
+  "openai_models": [
+    "gpt-5-mini"
+  ],
+  "gemini_models": [
+    "gemini-1.5-flash"
+  ],
+  "anthropic_models": [
+    "claude-sonnet-4-5"
+  ],
+  "totals": {
+    "openai::gpt-5-mini": {
+      "total": 1100,
+      "ok": 1100,
+      "correct": 1082,
+      "tool_error": 0,
+      "exception": 0,
+      "ok_rate": 1.0,
+      "accuracy": 0.9836
+    }
+  }
+}

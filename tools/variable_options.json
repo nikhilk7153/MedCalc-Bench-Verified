@@ -1,0 +1,425 @@
+{
+    "2": {
+        "age": ["years"],
+        "sex": ["Male", "Female"],
+        "weight": ["kg", "lbs"],
+        "height": ["cm", "in", "m"],
+        "creatinine": ["mg/dL", "µmol/L"]
+    },
+
+    "3": {
+        "age": ["years"],
+        "sex": ["Male", "Female"],
+        "creatinine": ["mg/dL", "µmol/L"]
+    },
+
+
+    "4": {
+        "age": ["years"],
+        "sex": ["Male", "Female"],
+        "Congestive Heart Failure": ["True", "False"],
+        "Thromboembolism history": ["True", "False"],
+        "Vascular disease history": ["True", "False"],
+        "Diabetes history": ["True", "False"],
+        "Hypertension history": ["True", "False"],
+        "Transient Ischemic Attacks History": ["True", "False"],
+        "Stroke": ["True", "False"]
+    },
+
+    "5": {
+        "Systolic Blood Pressure": ["mm Hg"],
+        "Diastolic Blood Pressure": ["mm Hg"]
+    },
+
+    "6": {
+        "weight": ["kg", "lbs"],
+        "height": ["cm", "in", "m"]
+    },
+
+    "7": {
+        "Calcium": ["mg/dL", "µmol/L"],
+        "Albumin": ["g/dL", "g/L"]
+    },
+
+    "8": {
+        "Heart Rate or Pulse": ["beats per minute"],
+        "Previously Documented Pulmonary Embolism": ["True", "False"],
+        "Immobilization for at least 3 days": ["True", "False"],
+        "Malignancy with treatment within 6 months or palliative": ["True", "False"],
+        "Pulmonary Embolism is #1 diagnosis OR equally likely": ["True", "False"],
+        "Surgery in the previous 4 weeks": ["True", "False"],
+        "Previously documented Deep Vein Thrombosis": ["True", "False"],
+        "Hemoptysis": ["True", "False"],
+        "Clinical signs and symptoms of Deep Vein Thrombosis": ["True", "False"]
+    },
+
+    "9": {
+        "creatinine": ["mg/dL", "µmol/L"],
+        "sex": ["Male", "Female"],
+        "age": ["years"], 
+        "Race": ["Black", "Caucasian", "Asian", "Hispanic", "Other"]
+    }, 
+
+    "10" : {
+        "height": ["cm", "in", "m"],
+        "weight": ["kg", "lbs"],
+        "sex": ["Male", "Female"]
+    },
+
+    "11": {
+        "QT Interval": ["ms"],
+        "Heart Rate or Pulse": ["beats per minute"]
+    },
+
+    "15": {
+        "Ascites": ["absent", "moderate", "slight"],
+        "Encephalopathy": ["No Encephalopathy", "Grade 1-2", "Grade 3-4"],
+        "international normalized ratio": "inr",
+        "Albumin": ["g/dL"],
+        "Bilirubin": ["mg/dL"]
+    }, 
+
+
+    "16": {
+        "Alternative diagnosis to Deep Vein Thrombosis as likely or more likely": ["True", "False"],
+        "Localized tenderness along the deep venous system": ["True", "False"],
+        "Previously documented Deep Vein Thrombosis": ["True", "False"],
+        "Paralysis, paresis, or recent plaster immobilization of the lower extremity": ["True", "False"],
+        "Entire Leg Swollen": ["True", "False"],
+        "Bedridden recently >3 days": ["True", "False"],
+        "Active cancer": ["True", "False"],
+        "Major surgery within 12 weeks": ["True", "False"],
+        "Calf swelling >3 centimeters compared to the other leg": ["True", "False"],
+        "Collateral (nonvaricose) superficial veins present": ["True", "False"],
+        "Pitting edema, confined to symptomatic leg": ["True", "False"]
+    }, 
+
+    "17": {
+        "Congestive Heart Failure criteria for the Cardiac Risk Index rule": ["True", "False"],
+        "Elevated-risk surgery": ["True", "False"],
+        "History of ischemic heart disease": ["True", "False"],
+        "Pre-operative treatment with insulin": ["True", "False"],
+        "History of cerebrovascular disease": ["True", "False"],
+        "Pre-operative creatinine": ["mg/dL"]
+    }, 
+
+    "18": {
+        "Hypertension history": ["True", "False"],
+        "Electrocardiogram Test": ["Normal", "Non-specific repolarization disturbance", "Significant ST deviation"],
+        "Diabetes mellitus": ["True", "False"],
+        "smoking": ["True", "False"],
+        "parent or sibling with Cardiovascular disease before age 65": ["True", "False"],
+        "atherosclerotic disease": ["True", "False"],
+        "Suspicion History": ["Slightly suspicious", "Moderately suspicious", "Highly suspicious"],
+        "hypercholesterolemia": ["True", "False"],
+        "obesity": ["True", "False"],
+        "Transient Ischemic Attacks History": ["True", "False"],
+        "Initial troponin": ["less than or equal to normal limit", "between the normal limit or up to three times the normal limit", "greater than three times normal limit"]
+    },
+
+    "19": {
+        "age": "age",
+        "Alanine aminotransferase": ["U/L"],
+        "Aspartate aminotransferase": ["U/L"],
+        "Platelet count": ["µL", "L"]
+    },
+
+    "20": {
+        "Age": ["years"],
+        "Temperature": ["degrees celsius", "degrees fahrenheit"],
+        "Cough Absent": ["True", "False"],
+        "Tender/swollen anterior cervical lymph nodes": ["True", "False"],
+        "Exudate or swelling on tonsils": ["True", "False"]
+    }, 
+
+    "22": {
+        "weight": ["kg", "lbs"]
+    },
+
+
+    "25": {
+        "Liver disease criteria for the HAS-BLED rule": ["True", "False"],
+        "Renal disease criteria for the HAS-BLED rule": ["True", "False"],
+        "Hypertension": ["True", "False"],
+        "Stroke": ["True", "False"],
+        "Medication usage predisposing to bleeding": ["True", "False"],
+        "Prior major bleeding or predisposition to bleeding": ["True", "False"],
+        "Labile international normalized ratio": ["True", "False"], 
+        "age": ["years"], 
+        "Number of Alcoholic Drinks Per Week": []
+    }, 
+
+    "26": {
+        "Sodium": ["mEq/L", "mmol/L"],
+        "Glucose": ["mg/dL", "mmol/L"]
+    },
+
+
+    "27": {
+        "Melena Present": ["True", "False"],
+        "Recent Syncope": ["True", "False"],
+        "Hepatic disease history": ["True", "False"],
+        "Cardiac Failure Present": ["True", "False"],
+        "Heart Rate or Pulse": ["beats per minute"],
+        "sex": ["Male", "Female"],
+        "Hemoglobin": ["g/dL"],
+        "Systolic Blood Pressure": ["mm Hg"], 
+        "Blood Urea Nitrogen (BUN)": ["mg/dL"]
+    }, 
+
+    "30": {
+    "Sodium": ["mEq/L", "mmol/L"],
+        "Glucose": ["mg/dL", "mmol/L"],
+        "Blood Urea Nitrogen (BUN)": ["mg/dL", "mmol/L"]
+    }, 
+
+
+    "32": {
+        "age": ["years"],
+        "Myocardial infarction": ["True", "False"],
+        "Congestive Heart Failure": ["True", "False"],
+        "Peripheral vascular disease": ["True", "False"],
+        "Cerebrovascular Accident": ["True", "False"],
+        "Transient Ischemic Attacks History": ["True", "False"],
+        "Dementia": ["True", "False"],
+        "Chronic Pulmonary Disease": ["True", "False"],
+        "Connective tissue disease": ["True", "False"],
+        "Peptic ulcer disease": ["True", "False"],
+        "Liver disease severity": ["none", "mild", "moderate to severe"],
+        "Hemiplegia": ["True", "False"],
+        "Diabetes mellitus": ["none or diet-controlled", "uncomplicated", "end-organ damage"], 
+        "Moderate to severe Chronic Kidney Disease": ["True", "False"],
+        "Solid tumor": ["none", "localized", "metastatic"],
+        "Leukemia": ["True", "False"],
+        "Lymphoma": ["True", "False"],
+        "AIDS": ["True", "False"]
+    }, 
+
+    "33": {
+        "Symptom onset <=3 days": ["True", "False"],
+        "Purulent tonsils": ["True", "False"],
+        "Fever in past 24 hours": ["True", "False"],
+        "Severe tonsil inflammation": ["True", "False"],
+        "Absence of cough or coryza": ["True", "False"]
+    }, 
+
+    "36": {
+        "sex": ["Male", "Female"],
+        "age": ["years"],
+        "Surgery Type": ["minor", "major", "laparoscopic", "arthroscopic", "elective major lower extremity arthroplasty"],
+        "Major Surgery in the last month": ["True", "False"],
+        "Congestive Heart Failure in the last month": ["True", "False"],
+        "Sepsis in the last month":  ["True", "False"],
+        "Pneumonia in the last month": ["True", "False"],
+        "Immobilizing plaster cast in the last month":  ["True", "False"],
+        "Hip, pelvis, or leg fracture in the last month":  ["True", "False"],
+        "Stroke in the last month": ["True", "False"],
+        "Multiple trauma in the last month": ["True", "False"],
+        "Acute spinal cord injury causing paralysis in the last month": ["True", "False"],
+        "Varicose veins": ["True", "False"],
+        "Current swollen legs": ["True", "False"],
+        "Current central venous access": ["True", "False"],
+        "Previously documented Deep Vein Thrombosis": ["True", "False"],
+        "Previously Documented Pulmonary Embolism": ["True", "False"],
+        "Family history of thrombosis": ["True", "False"],
+        "Positive Factor V Leiden":  ["True", "False"],
+        "Positive prothrombin 20210A": ["True", "False"],
+        "Elevated serum homocysteine": ["True", "False"],
+        "Positive lupus anticoagulant": ["True", "False"],
+        "Elevated anticardiolipin antibody": ["True", "False"],
+        "Heparin-induced thrombocytopenia": ["True", "False"],
+        "Other congenital or acquired thrombophilia": ["True", "False"],
+        "Mobility": ["normal", "on bed rest", "confined to bed >72 hours"],
+        "History of inflammatory bowel disease": ["True", "False"],
+        "Acute Myocardial infarction": ["True", "False"],
+        "Chronic Obstructive Pulmonary Disease": ["True", "False"],
+        "Present or previous malignancy": ["True", "False"],
+        "Body Mass Index (BMI)": ["kg/m^2"]
+    }, 
+
+    "21": {
+        "Best eye response": ["spontaneously", "eye opening to verbal command", "eye opening to pain", "no eye opening"],   
+        "Best verbal response": ["oriented", "confused", "inappropriate words", "incomprehensible sounds", "no verbal response"],
+        "Best motor response": ["obeys commands", "localizes pain", "withdrawal from pain", "flexion to pain", "extension to pain", "no motor response"]
+    },
+
+    "23": { 
+        "Dialysis at least twice in the past week": ["True", "False"],
+        "Continuous veno-venous hemodialysis for \u226524 hours in the past week": ["True", "False"],
+        "international normalized ratio": "decimal value without units",
+        "creatinine": ["mg/dL", "µmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"],
+        "Bilirubin": ["mg/dL"]
+    },
+
+    "28": {
+        "History of severe organ failure or immunocompromise": ["True", "False"],
+        "age": ["years"],
+        "Temperature": ["degrees fahrenheit", "degrees celsius"],
+        "Mean arterial pressure": ["mm Hg"],
+        "pH": "pH",
+        "Heart Rate or Pulse": ["beats per minute"],
+        "respiratory rate": ["breaths per minute"],
+        "Sodium": ["mEq/L", "mmol/L"],
+        "Potassium": ["mEq/L", "mmol/L"],
+        "creatinine": ["mg/dL"], 
+        "Acute renal failure": ["True", "False"],
+        "Chronic renal failure": ["True", "False"],
+        "Hematocrit": ["%"],
+        "White blood cell count": ["mm^3"],
+        "Glasgow Coma Score": ["1-15"],
+        "FiO2": ["%"],
+        "PaO2": ["mm Hg"],
+        "A-a gradient": "",
+        "Diastolic Blood Pressure": ["mm Hg"],
+        "Systolic Blood Pressure": ["mm Hg"],
+        "Surgery Type": ["Emergency", "Elective", "Nonoperative"]
+    },
+
+    "29": {
+        "Heart Rate or Pulse": ["beats per minute"],
+        "pH": "decimal value without units",
+        "Systolic Blood Pressure": ["mm Hg"],
+        "Blood Urea Nitrogen (BUN)": ["mg/dL"],
+        "Renal disease": ["True", "False"],
+        "Cerebrovascular disease history": ["True", "False"],
+        "Neoplastic disease": ["True", "False"],
+        "Sodium": ["mEq/L", "mmol/L"],
+        "Liver disease history": ["True", "False"],
+        "Congestive Heart Failure": ["True", "False"],
+        "Nursing home resident": ["True", "False"],
+        "Partial pressure of oxygen": ["mm Hg"],
+        "age": ["years"],
+        "respiratory rate": ["breaths per minute"],
+        "sex": ["Male", "Female"],
+        "Hematocrit": ["%"],
+        "Glucose": ["mg/dL"],
+        "Temperature": ["degrees celsius", "degrees fahrenheit"],
+        "Pleural effusion on x-ray": ["True", "False"],
+        "Altered mental status": ["True", "False"]
+    },
+
+    "31":{
+        "Glucose": ["mg/dL", "mmol/L"],
+        "Insulin": ["µIU/mL", "pmol/L"]
+    },
+
+    "38": {
+        "age": ["years"],
+        "weight": ["kg", "lbs"],
+        "sex": ["Male", "Female"],
+        "Sodium": ["mEq/L", "mmol/L"]
+    },
+
+    "39" : {
+        "Chloride": ["mEq/L", "mmol/L"],
+        "Bicarbonate": ["mEq/L", "mmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"]
+    },
+
+    "40": {
+        "Urine creatinine": ["mg/dL", "µmol/L"],
+        "creatinine": ["mg/dL", "µmol/L"],
+        "Urine sodium": ["mEq/L", "mmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"]
+    },
+
+    "43": {
+        "PaO2": ["mm Hg"],
+        "FiO2": ["%"],
+        "On mechanical ventilation": ["True", "False"],
+        "Continuous positive airway pressure": ["True", "False"],
+        "Platelet count": ["µL"],
+        "Glasgow Coma Score": ["1-15"],
+        "Bilirubin": ["mg/dL"],
+        "Hypotension": ["True", "False"],
+        "Systolic Blood Pressure": ["mm Hg"],
+        "Diastolic Blood Pressure": ["mm Hg"],
+        "DOPamine": ["mcg/kg/min"],
+        "DOBUTamine": ["mcg/kg/min"],
+        "norEPINEPHrine": ["mcg/kg/min"],
+        "EPINEPHrine": ["mcg/kg/min"],
+        "creatinine": ["mg/dL"],
+        "Urine Output": ["mL/day"]
+    }, 
+
+    "46": {
+        "age": ["years"],
+        "sex": ["Male", "Female"],
+        "Smoker": ["True", "False"],
+        "Total cholesterol": ["mg/dL", "mmol/L"],
+        "high-density lipoprotein cholesterol": ["mg/dL", "mmol/L"],
+        "Blood pressure being treated with medicines": ["True", "False"],
+        "Systolic Blood Pressure": ["mm Hg"]
+    },
+
+    "48": {
+        "Hemoptysis": ["True", "False"],
+        "Recent surgery or trauma": ["True", "False"],
+        "Previously documented Deep Vein Thrombosis": ["True", "False"],
+        "Previously Documented Pulmonary Embolism": ["True", "False"],
+        "Unilateral Leg Swelling": ["True", "False"],
+        "Hormone use": ["True", "False"],
+        "age": ["years"],
+        "Heart Rate or Pulse": ["beats per minute"],
+        "O\u2082 saturation percentage": ["%"]
+    },
+
+    "44" : {
+        "Total cholesterol": ["mg/dL", "mmol/L"],
+        "high-density lipoprotein cholesterol": ["mg/dL", "mmol/L"],
+        "Triglycerides": ["mg/dL", "mmol/L"]
+    }, 
+
+    "45": {
+        "age": ["years"],
+        "Systolic Blood Pressure": ["mm Hg"],
+        "Diastolic Blood Pressure": ["mm Hg"],
+        "Blood Urea Nitrogen (BUN)": ["mg/dL", "mmol/L"],
+        "respiratory rate": ["breaths per minute"],
+        "Confusion": ["True", "False"]
+    }, 
+
+    "51": {
+        "Temperature": ["degrees celsius", "degrees fahrenheit"],
+        "Heart Rate or Pulse": ["beats per minute"],
+        "respiratory rate": ["breaths per minute"],
+        "White blood cell count": ["mm^3", "µL", "L", "dL"],
+        "PaCO2": ["mm Hg"]
+    }, 
+
+    "63": {
+        "Chloride":  ["mEq/L", "mmol/L"],
+        "Bicarbonate": ["mEq/L", "mmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"]
+    }, 
+
+
+    "64": {
+        "Chloride":  ["mEq/L", "mmol/L"],
+        "Bicarbonate": ["mEq/L", "mmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"]
+    }, 
+
+    "65": {
+        "Chloride":  ["mEq/L", "mmol/L"],
+        "Bicarbonate": ["mEq/L", "mmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"],
+        "Albumin": ["g/dL", "g/L"]
+    }, 
+
+    "66": {
+        "Chloride":  ["mEq/L", "mmol/L"],
+        "Bicarbonate": ["mEq/L", "mmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"],
+        "Albumin": ["g/dL", "g/L"]
+    }, 
+
+    "67": {
+        "Chloride":  ["mEq/L", "mmol/L"],
+        "Bicarbonate": ["mEq/L", "mmol/L"],
+        "Sodium": ["mEq/L", "mmol/L"],
+        "Albumin": ["g/dL", "g/L"]
+    }
+
+}

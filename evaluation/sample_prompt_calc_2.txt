@@ -1,0 +1,254 @@
+You are given one medical calculator API.
+Your task is to produce a valid tool call JSON for this calculator only.
+
+Rules:
+1) Use ONLY the provided calculator API and its schema.
+2) Map patient/context inputs to the calculator arguments.
+3) If required information is missing, still return JSON and set missing fields to null.
+4) Do NOT add extra keys.
+5) Output MUST be valid JSON only (no markdown, no explanation).
+
+Expected output format:
+{
+  "calculator_id": <int>,
+  "arguments": {
+    "<python_arg_name>": <value or null>
+  }
+}
+
+Notes on numeric fields:
+- If schema.format is ["number"], return a scalar number.
+- If schema.format is ["number", "unit"], return [number, "unit"].
+- Respect schema.possible_values for categorical fields.
+
+=== CALCULATOR API CATALOG ENTRY ===
+{
+  "calculator_id": 2,
+  "calculator_name": "Creatinine Clearance (Cockcroft-Gault Equation)",
+  "category": "lab test",
+  "tool_module": "creatinine_clearance.py",
+  "function_name": "generate_cockcroft_gault",
+  "question": "What is the patient's Creatinine Clearance using the Cockroft-Gault Equation in terms of mL/min? You should use the patient's adjusted body weight in kg instead of the patient's actual body weight if the patient is overweight or obese based on their BMI. If the patient's BMI's normal, set their adjusted body weight to the minimum of the ideal body and actual weight. If the patient is underweight, please set their adjusted body weight to their actual body weight.",
+  "arguments": [
+    {
+      "python_name": "weight",
+      "required": true,
+      "default": null,
+      "schema": {
+        "kind": "numerical",
+        "format": [
+          "number",
+          "unit"
+        ],
+        "possible_units": [
+          "kg",
+          "lbs",
+          "g"
+        ]
+      }
+    },
+    {
+      "python_name": "sex",
+      "required": true,
+      "default": null,
+      "schema": {
+        "kind": "categorical",
+        "format": "string",
+        "possible_values": [
+          "Male",
+          "Female"
+        ]
+      }
+    },
+    {
+      "python_name": "age",
+      "required": true,
+      "default": null,
+      "schema": {
+        "kind": "numerical",
+        "format": [
+          "number"
+        ],
+        "possible_units": [
+          "years",
+          "months",
+          "weeks",
+          "days"
+        ],
+        "note": "accepts number; [number, unit] also supported"
+      }
+    },
+    {
+      "python_name": "creatinine",
+      "required": true,
+      "default": null,
+      "schema": {
+        "kind": "numerical",
+        "format": [
+          "number",
+          "unit"
+        ],
+        "possible_units": [
+          "kg",
+          "g",
+          "mg",
+          "µg",
+          "mol",
+          "mmol",
+          "µmol",
+          "pmol",
+          "mEq",
+          "L",
+          "dL",
+          "mL",
+          "µL",
+          "mm^3",
+          "cm^3",
+          "m^3",
+          "kg/L",
+          "kg/dL",
+          "kg/mL",
+          "kg/µL",
+          "kg/mm^3",
+          "kg/cm^3",
+          "kg/m^3",
+          "g/L",
+          "g/dL",
+          "g/mL",
+          "g/µL",
+          "g/mm^3",
+          "g/cm^3",
+          "g/m^3",
+          "mg/L",
+          "mg/dL",
+          "mg/mL",
+          "mg/µL",
+          "mg/mm^3",
+          "mg/cm^3",
+          "mg/m^3",
+          "µg/L",
+          "µg/dL",
+          "µg/mL",
+          "µg/µL",
+          "µg/mm^3",
+          "µg/cm^3",
+          "µg/m^3",
+          "mol/L",
+          "mol/dL",
+          "mol/mL",
+          "mol/µL",
+          "mol/mm^3",
+          "mol/cm^3",
+          "mol/m^3",
+          "mmol/L",
+          "mmol/dL",
+          "mmol/mL",
+          "mmol/µL",
+          "mmol/mm^3",
+          "mmol/cm^3",
+          "mmol/m^3",
+          "µmol/L",
+          "µmol/dL",
+          "µmol/mL",
+          "µmol/µL",
+          "µmol/mm^3",
+          "µmol/cm^3",
+          "µmol/m^3",
+          "pmol/L",
+          "pmol/dL",
+          "pmol/mL",
+          "pmol/µL",
+          "pmol/mm^3",
+          "pmol/cm^3",
+          "pmol/m^3",
+          "mEq/L",
+          "mEq/dL",
+          "mEq/mL",
+          "mEq/µL",
+          "mEq/mm^3",
+          "mEq/cm^3",
+          "mEq/m^3"
+        ]
+      }
+    },
+    {
+      "python_name": "height",
+      "required": true,
+      "default": null,
+      "schema": {
+        "kind": "numerical",
+        "format": [
+          "number"
+        ],
+        "possible_units": [
+          "m",
+          "cm",
+          "ft",
+          "in",
+          "[feet, \"ft\", inches, \"in\"]"
+        ]
+      }
+    }
+  ],
+  "call_example": {
+    "module": "creatinine_clearance",
+    "function": "generate_cockcroft_gault",
+    "arguments": {
+      "weight": "<value>",
+      "sex": "<value>",
+      "age": "<value>",
+      "creatinine": "<value>",
+      "height": "<value>"
+    }
+  }
+}
+
+=== CALCULATOR API CODE (creatinine_clearance.py) ===
+```python
+import weight_conversion
+import height_conversion
+import ideal_body_weight
+import adjusted_body_weight
+import bmi_calculator
+import unit_converter_new
+import age_conversion
+from rounding import round_number
+
+def generate_cockcroft_gault(weight, sex, age, creatinine, height):
+    raw_weight = weight
+    weight = weight_conversion.weight_conversion(weight)
+    gender_coefficient = 1 if sex == 'Male' else 0.85
+    age = age_conversion.age_conversion(age)
+    serum_creatinine_value = creatinine[0]
+    serum_creatinine_units = creatinine[1]
+    is_male = True if sex == 'Male' else False
+    bmi = float(bmi_calculator.bmi_calculator(height, raw_weight))
+    if bmi < 18.5:
+        weight_status = 'underweight'
+    elif 18.5 <= bmi <= 24.9:
+        weight_status = 'normal weight'
+    else:
+        weight_status = 'overweight/obese'
+    ideal_weight = ideal_body_weight.ibw(height, sex)
+    adjusted_weight_response = adjusted_body_weight.abw(raw_weight, height, sex)
+    serum_creatinine = unit_converter_new.conversion(serum_creatinine_value, 'creatinine', 113.12, None, serum_creatinine_units, 'mg/dL')
+    adjusted_weight = 0
+    if bmi < 18.5:
+        adjusted_weight = weight
+    elif 18.5 <= bmi <= 24.9:
+        adjusted_weight = min(ideal_weight, weight)
+    else:
+        adjusted_weight = adjusted_weight_response
+    if is_male:
+        constant = 1
+    else:
+        constant = 0.85
+    creatinine_clearance = (140 - age) * adjusted_weight * constant / (serum_creatinine * 72)
+    return creatinine_clearance
+
+```
+
+=== TASK INPUT ===
+{"age": "65 years", "sex": "Male", "weight": [80, "kg"], "height": [175, "cm"], "creatinine": [1.2, "mg/dL"]}
+
+Return only the JSON object now.

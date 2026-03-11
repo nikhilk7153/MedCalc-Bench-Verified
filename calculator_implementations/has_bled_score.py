@@ -54,3 +54,5 @@ The total HAS-BLED score is calculated by summing the points for each criterion.
     explanation += f"Hence, the patient's HAS-BLED score is {has_bled_score}."
 
     return {"Explanation": explanation, "Answer": has_bled_score}
+
+

@@ -70,3 +70,4 @@ The total CURB-65 score is calculated by summing the points for each criterion.
 
     return {"Explanation": explanation, "Answer": curb_65_score}
 
+

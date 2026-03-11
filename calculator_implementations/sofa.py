@@ -147,7 +147,6 @@ The total SOFA Score is calculated by summing the points for each criterion.
         explanation += f"Because the patient's platelet count is less than 20*10³/µL, we increment the score by four points, making the current score {sofa_score} + 4 = {sofa_score + 4}.\n"
         sofa_score += 4
 
-    creatinine = 0
 
     if 'creatinine' in input_parameters:
         creatinine_exp, creatinine = unit_converter_new.conversion_explanation(input_parameters['creatinine'][0], "creatinine", 113.12 , None, input_parameters['creatinine'][1], "mg/dL")
@@ -178,5 +177,3 @@ The total SOFA Score is calculated by summing the points for each criterion.
     explanation += f"Hence, the patient's SOFA score is {sofa_score} points."
 
     return {"Explanation": explanation, "Answer": sofa_score}
-
-

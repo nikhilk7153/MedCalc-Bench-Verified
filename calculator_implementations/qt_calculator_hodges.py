@@ -18,3 +18,6 @@ def hodges_calculator_explanation(input_variables):
     explanation += f"The patient's corrected QT interval (QTc) is {qt_c} msec."
 
     return {"Explanation": explanation, "Answer": qt_c}
+
+
+

@@ -1,10 +1,6 @@
 import delta_gap
 import unit_converter_new
 from rounding import round_number
-from unit_converter_new import conversion_explanation
-
-
-
 def compute_delta_ratio_explanation(input_parameters):
 
     delta_gap_resp = delta_gap.compute_delta_gap_explanation(input_parameters)

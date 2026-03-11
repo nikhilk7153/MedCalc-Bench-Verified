@@ -29,6 +29,7 @@ def random_date():
     return month, day, year
 
 def estimated_date_calculator():
+    data = {}
 
     cycle_length = random.randint(20, 30)
 
@@ -40,12 +41,13 @@ def estimated_date_calculator():
 
     edd_note = f"The patient's last menstrual period was on {modified_date_string}. Her cycle length is {cycle_length} days."
 
-    input_parameters = {"cycle_length": cycle_length, "menstrual_date": modified_date_string}
+    data = {"cycle_length": cycle_length, "menstrual_date": modified_date_string}
 
-    return edd_note, input_parameters
+    return edd_note, data
 
 
 def estimated_date_of_conception():
+    data = {}
 
     cycle_length = random.randint(20, 30)
 
@@ -57,12 +59,13 @@ def estimated_date_of_conception():
 
     edc_note = f"The patient's last menstrual period was on {modified_date_string}."
     
-    input_parameters = {"menstrual_date": modified_date_string}
+    data = {"menstrual_date": modified_date_string}
 
-    return edc_note, input_parameters
+    return edc_note, data
 
 
 def estimated_gestational_age():
+    data = {}
 
 
     month, day, year = random_date()
@@ -80,12 +83,13 @@ def estimated_gestational_age():
 
     ega_note = f"The patient's last menstrual period was on {date_obj_str}. Today's date is {modified_date_string}."
     
-    input_parameters = {"current_date": modified_date_string, "menstrual_date": date_obj_str}
+    data = {"current_date": modified_date_string, "menstrual_date": date_obj_str}
 
-    return ega_note, input_parameters
+    return ega_note, data
 
 
 def qt_interval_patient_notes_bazett():
+    data = {}
 
 
     heart_rate = round(random.uniform(45, 180))
@@ -94,23 +98,25 @@ def qt_interval_patient_notes_bazett():
 
     note = f"A patient has a heart rate of {heart_rate} bpm and a QT interval of {qt_interval} msec."
 
-    input_parameters = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
+    data = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
     
-    return note, input_parameters
+    return note, data
 
 
 def qt_interval_patient_notes_framingham():
+    data = {}
 
     heart_rate = round(random.uniform(45, 180))
 
     qt_interval = round(random.uniform(200, 500))
 
-    input_parameters = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
+    data = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
     
-    return note, input_parameters
+    return note, data
 
 
 def qt_interval_patient_notes_fridericia():
+    data = {}
 
     heart_rate = round(random.uniform(45, 180))
 
@@ -118,12 +124,13 @@ def qt_interval_patient_notes_fridericia():
 
     note = f"A patient has a heart rate of {heart_rate} bpm and a QT interval of {qt_interval} msec."
 
-    input_parameters = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
+    data = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
     
-    return note, input_parameters
+    return note, data
 
 
 def qt_interval_patient_notes_hodges():
+    data = {}
 
     heart_rate = round(random.uniform(45, 180))
 
@@ -131,12 +138,13 @@ def qt_interval_patient_notes_hodges():
 
     note = f"A patient has a heart rate of {heart_rate} bpm and a QT interval of {qt_interval} msec."
 
-    input_parameters = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
+    data = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
     
-    return note, input_parameters
+    return note, data
 
 
 def qt_interval_patient_notes_rautaharju():
+    data = {}
 
 
     heart_rate = round(random.uniform(45, 180))
@@ -145,12 +153,13 @@ def qt_interval_patient_notes_rautaharju():
 
     note = f"A patient has a heart rate of {heart_rate} bpm and a QT interval of {qt_interval} msec."
 
-    input_parameters = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
+    data = {"heart_rate": [heart_rate, "beats per minute"], "qt_interval": [qt_interval, "msec"]}
     
-    return note, input_parameters
+    return note, data
 
 
 def mme_conversion():
+    data = {}
     
     mme_drugs = ["Codeine", "FentaNYL buccal", "HYDROcodone", "HYDROmorphone", "Methadone", "Morphine", 
                  "OxyCODONE", "OxyMORphone", "Tapentadol", "TraMADol"]
@@ -162,7 +171,7 @@ def mme_conversion():
 
     note = "A patient takes "
 
-    input_parameters = {}
+    data = {}
 
     for i in range(num_instances):
 
@@ -173,11 +182,11 @@ def mme_conversion():
         key_name_dose_per_day = drugs[i] + " Dose Per Day"
 
         if drugs[i] == "FentaNYL buccal":
-            input_parameters[key_name_dose] = [num_amount , "µg"]
+            data[key_name_dose] = [num_amount , "µg"]
         else:
-            input_parameters[key_name_dose] = [num_amount , "mg"]
+            data[key_name_dose] = [num_amount , "mg"]
         
-        input_parameters[key_name_dose_per_day] = [num_doses, "per day"]
+        data[key_name_dose_per_day] = [num_doses, "per day"]
 
         add_s = 's'
 
@@ -193,9 +202,10 @@ def mme_conversion():
         elif (num_instances == 2):
             note += f"{num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day "
 
-    return note, input_parameters
+    return note, data
 
 def steroid_conversion():
+    data = {}
 
   
     steroid_names = ['Betamethasone IV', 'Cortisone PO', 'Dexamethasone IV', 'Dexamethasone PO', 'Hydrocortisone IV', 'Hydrocortisone PO',  'MethylPrednisoLONE IV', 'MethylPrednisoLONE PO', 'PredniSONE PO', 'PrednisoLONE PO', 'Triamcinolone IV']
@@ -204,19 +214,20 @@ def steroid_conversion():
 
     random_value = round(random.uniform(0.6, 9), 2)
 
-    input_parameters = {"input steroid": ['Betamethasone IV', random_value, "mg"], "target steroid": choices[0]}
+    data = {"input steroid": ['Betamethasone IV', random_value, "mg"], "target steroid": choices[0]}
     
-    amount = round_number(steroid_conversion_calculator.compute_steroid_conversion(input_parameters))
+    amount = round_number(steroid_conversion_calculator.compute_steroid_conversion(data))
 
     note = f"A patient has taken {amount} mg of {choices[0]}. "
 
-    input_parameters = {"input steroid": [choices[0], round_number(amount), "mg"], "target steroid": choices[1]}
+    data = {"input steroid": [choices[0], round_number(amount), "mg"], "target steroid": choices[1]}
 
-    return note, input_parameters
+    return note, data
 
 # Have the functions for generating the values. Just ask the LLM to compute the value. 
 
 def target_weight():
+    data = {}
 
     height_units = ["cm", "m", "in"]
 
@@ -235,9 +246,9 @@ def target_weight():
 
     note = f"Patient has a height of {height_value} {height_unit} and their target BMI is {bmi} kg/m^2."
 
-    input_parameters = {"body_mass_index": [bmi, "kg/m^2"], "height": [height_value, height_unit]}
+    data = {"body_mass_index": [bmi, "kg/m^2"], "height": [height_value, height_unit]}
     
-    return note, input_parameters
+    return note, data
 
 
 _script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -277,7 +288,7 @@ for calc_id in calc_ids:
         function_name = calculator_id_to_name[calc_id]
 
         if function_name in globals() and callable(globals()[function_name]):
-            note, input_parameters =  globals()[function_name]()
+            note, data =  globals()[function_name]()
 
     
             key_name =  str(i + 1)
@@ -288,14 +299,14 @@ for calc_id in calc_ids:
 
             function = getattr(module, calc_info[calc_id]["explanation function"])
 
-            gt_result = function(input_parameters)
+            gt_result = function(data)
 
             data[calc_id][key_name] = {}
             data[calc_id][key_name]["explanation"] = gt_result["Explanation"]
             data[calc_id][key_name]["Ground Truth Answer"] = gt_result["Answer"]
             data[calc_id][key_name]["calculator name"] = calc_info[calc_id]["calculator name"]
             data[calc_id][key_name]["Patient Note"] = note
-            data[calc_id][key_name]["input_parameters"] = input_parameters
+            data[calc_id][key_name]["data"] = data
             
 
 

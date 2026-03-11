@@ -78,4 +78,3 @@ def generate_cockcroft_gault_explanation(params):
 
     return {"Explanation": output, "Answer": creatinine_clearance}
 
-

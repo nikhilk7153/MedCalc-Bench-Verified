@@ -16,4 +16,12 @@ def bmi_calculator_explanation(input_variables):
     output += f"The patient's bmi is therefore {weight} kg / ({height} m * {height} m) = {result} kg/m^2."
 
     return {"Explanation": output, "Answer": result}
-    
+
+
+def bmi_calculator(height, weight):
+    height = height_conversion.height_conversion(height)
+    weight = weight_conversion.weight_conversion(weight)
+    result = weight / (height * height)
+    return result
+
+

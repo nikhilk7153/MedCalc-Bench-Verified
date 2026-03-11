@@ -50,3 +50,5 @@ For each criteria, if a patient's value is not mentioned/not testable in the not
     explanation += f"Hence, the patient's glasgow coma score is {glasgow_score}."
 
     return {"Explanation": explanation , "Answer": glasgow_score}
+
+

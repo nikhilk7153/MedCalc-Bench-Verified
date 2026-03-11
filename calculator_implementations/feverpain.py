@@ -42,3 +42,5 @@ The FeverPAIN score is calculated by summing the points for each criterion.
 
     return {"Explanation": explanation, "Answer": fever_pain_score}
 
+
+

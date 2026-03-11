@@ -20,3 +20,4 @@ def fredericia_calculator_explanation(input_variables):
     return {"Explanation": explanation, "Answer": qt_c}
 
 
+

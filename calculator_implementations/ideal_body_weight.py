@@ -27,4 +27,3 @@ def ibw_explanation(input_variables):
     return {"Explanation": explanation, "Answer": ibw}
 
 
-

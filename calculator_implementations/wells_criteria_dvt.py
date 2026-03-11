@@ -85,4 +85,3 @@ The total score is calculated by summing the points for each criterion.
 
     return {"Explanation": output, "Answer": score}
 
-

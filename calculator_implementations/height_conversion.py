@@ -20,6 +20,7 @@ def height_conversion_explanation(height_info):
         height = round_number(height_info[0] * 0.0254)
         return f"The patient's height is {height_info[0]} in, which is {height_info[0]} in * 0.0254 m / in = {height} m. ", height
 
+
 def height_conversion_explanation_cm(height_info):
     if len(height_info) == 4:
         feet = height_info[0]
@@ -87,3 +88,4 @@ def height_conversion_explanation_in(height_info):
         height_in = height_info[0]
         explanation = f"The patient's height is {height_in} in. "
         return explanation, height_in
+

@@ -26,4 +26,3 @@ def compute_anion_gap_explanation(input_parameters):
 
     return {"Explanation": explanation, "Answer": answer}
 
-

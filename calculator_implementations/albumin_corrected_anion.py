@@ -10,7 +10,7 @@ def compute_albumin_corrected_anion_explanation(input_parameters):
 
     explanation += anion_gap_data["Explanation"]
 
-    albumin_exp, albumin = unit_converter_new.conversion_explanation(input_parameters["albumin"][0], "albumin", None, None, input_parameters["albumin"][1], "g/dL")
+    albumin_exp, albumin = unit_converter_new.conversion_explanation(input_parameters["albumin"][0], "albumin", 66500, None, input_parameters["albumin"][1], "g/dL")
 
     explanation += albumin_exp
 
@@ -22,3 +22,4 @@ def compute_albumin_corrected_anion_explanation(input_parameters):
     explanation += f"Hence, the patient's albumin corrected anion gap is {final_answer} mEq/L."
 
     return {"Explanation": explanation, "Answer": final_answer}
+

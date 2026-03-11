@@ -90,17 +90,14 @@ The total score is calculated by summing the points for each criterion.
             if risk_factors_count == 0:
                 explanation += f"0 points are added for the risk factors criteria, keeping the current total at {total_score}.\n"
 
-            elif input_parameters['atherosclerotic_disease']:
-                explanation += f"2 points are added for the risk factors criteria as atherosclerotic disease is present, making the current total {total_score} + 2 = {total_score + 2}.\n"
+            elif input_parameters['atherosclerotic_disease'] or risk_factors_count >= 3:
+                explanation += f"2 points are added for the risk factors criteria (≥3 risk factors or atherosclerotic disease present), making the current total {total_score} + 2 = {total_score + 2}.\n"
                 total_score += 2
 
             elif 1 <= risk_factors_count <= 2:
                 explanation += f"1 point is added for the risk factors criteria, making the current total, {total_score} + 1 = {total_score + 1}.\n"
                 total_score += 1
          
-            elif risk_factors_count >= 3:
-                explanation += f"2 points are added as 3 or more risk factors are present, making the current total {total_score} + 2 = {total_score + 2}.\n"
-                total_score += 2
 
         elif param == "age":
             if age < 45:
@@ -130,4 +127,6 @@ The total score is calculated by summing the points for each criterion.
     explanation += f"Based on the patient's data, the HEART Score is {total_score}."
 
     return {"Explanation": explanation, "Answer": total_score}
-        
+
+
+

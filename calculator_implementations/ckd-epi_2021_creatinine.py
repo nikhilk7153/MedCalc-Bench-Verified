@@ -46,7 +46,7 @@ def ckd_epi_2021_explanation(input_parameters):
         b = -1.2
 
     elif creatinine_val > 0.9 and gender == "Male":
-        explanation += f"Because the patient's gender is male and the creatinine concentration is greater than or equal to 0.9 mg/dL, A = 0.9 and B = -1.2.\n"
+        explanation += f"Because the patient's gender is male and the creatinine concentration is greater equal to 0.9 mg/dL, A = 0.9 and B = -1.2.\n"
         a = 0.9
         b = -1.2
 
@@ -57,4 +57,3 @@ def ckd_epi_2021_explanation(input_parameters):
     explanation += f"Hence, the GFR value is {result} ml/min/1.73 m²."
 
     return {"Explanation": explanation, "Answer": result}
- 

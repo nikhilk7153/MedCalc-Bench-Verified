@@ -113,3 +113,4 @@ The total Glasgow-Blatchford Score is calculated by summing the points for each 
     explanation += f"The patient's Glasgow Bleeding Score is {score}."
 
     return {"Explanation": explanation, "Answer": score}
+

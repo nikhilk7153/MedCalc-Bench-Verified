@@ -116,6 +116,84 @@ The total Caprini Score is calculated by summing the points for each criterion.
     return {"Explanation": explanation, "Answer": score}
 
 
+def caprini_score(
+    sex,
+    age,
+    bmi=None,
+    surgery_type_value=None,
+    mobility_value=None,
+    major_surgery_last_month=False,
+    chf_last_month=False,
+    sepsis=False,
+    pneumonia=False,
+    immobilizing_plaster_cast=False,
+    hip_pelvis_leg_fracture=False,
+    stroke_last_month=False,
+    multiple_trauma=False,
+    acute_spinal_chord_injury=False,
+    varicose_veins=False,
+    current_swollen_legs=False,
+    current_central_venuous=False,
+    previous_dvt=False,
+    previous_pe=False,
+    family_history_thrombosis=False,
+    positive_factor_v=False,
+    positive_prothrombin=False,
+    serum_homocysteine=False,
+    positive_lupus_anticoagulant=False,
+    elevated_anticardiolipin_antibody=False,
+    heparin_induced_thrombocytopenia=False,
+    congenital_acquired_thrombophilia=False,
+    inflammatory_bowel_disease=False,
+    acute_myocardial_infarction=False,
+    copd=False,
+    malignancy=False,
+):
+    score = 0
+    age = age_conversion.age_conversion(age)
+    if age <= 40:
+        pass
+    elif 41 <= age <= 60:
+        score += 1
+    elif 61 <= age <= 74:
+        score += 2
+    elif age >= 75:
+        score += 3
+    if mobility_value is not None:
+        score += mobility.get(str(mobility_value).lower(), 0)
+    if surgery_type_value is not None:
+        score += surgery_type.get(str(surgery_type_value).lower(), 0)
+    if bmi is not None:
+        bmi_value = bmi[0] if isinstance(bmi, (list, tuple)) else bmi
+        if bmi_value > 25:
+            score += 1
 
+    score += 1 if major_surgery_last_month else 0
+    score += 1 if chf_last_month else 0
+    score += 1 if sepsis else 0
+    score += 1 if pneumonia else 0
+    score += 2 if immobilizing_plaster_cast else 0
+    score += 5 if hip_pelvis_leg_fracture else 0
+    score += 5 if stroke_last_month else 0
+    score += 5 if multiple_trauma else 0
+    score += 5 if acute_spinal_chord_injury else 0
+    score += 1 if varicose_veins else 0
+    score += 1 if current_swollen_legs else 0
+    score += 2 if current_central_venuous else 0
+    score += 3 if previous_dvt else 0
+    score += 3 if previous_pe else 0
+    score += 3 if family_history_thrombosis else 0
+    score += 3 if positive_factor_v else 0
+    score += 3 if positive_prothrombin else 0
+    score += 3 if serum_homocysteine else 0
+    score += 3 if positive_lupus_anticoagulant else 0
+    score += 3 if elevated_anticardiolipin_antibody else 0
+    score += 3 if heparin_induced_thrombocytopenia else 0
+    score += 3 if congenital_acquired_thrombophilia else 0
+    score += 1 if inflammatory_bowel_disease else 0
+    score += 1 if acute_myocardial_infarction else 0
+    score += 1 if copd else 0
+    score += 2 if malignancy else 0
+    return score
 
 

@@ -109,3 +109,4 @@ The total score is calculated by summing the points for each criterion.
    explanation += f"The patient's Well's score for pulmonary embolism is {score}."
 
    return {"Explanation": explanation, "Answer": score}
+

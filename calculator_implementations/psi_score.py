@@ -6,7 +6,7 @@ import convert_temperature
 
 def psi_score_explanation(input_variables):
 
-    age = age_conversion.age_conversion(input_variables["age"])
+    age = age_conversion.age_conversion_explanation(input_variables["age"])
     gender = input_variables["sex"]
     pulse = input_variables["heart_rate"][0]
     temperature_exp, temperature = convert_temperature.fahrenheit_to_celsius_explanation(input_variables["temperature"][0], input_variables["temperature"][1])
@@ -182,7 +182,7 @@ The total score is calculated by summing the points for each criterion.
 
         
         if partial_pressure_oxygen[0] < 8:
-            explanation += f"The patient's partial pressure of oxygen is less than 8 kPa, and so we add {psi_score} points to the score, making the current total {psi_score} + 10 = {psi_score + 10}.\n"
+            explanation += f"The patient's partial pressure of oxygen is less than 8 kPa, and so we add 10 points to the score, making the current total {psi_score} + 10 = {psi_score + 10}.\n"
             psi_score += 10
         else:
             explanation += f"The patient's partial pressure of oxygen is greater than or equal to 8 kPa, and so we not add any points to the current total, keeping it at {psi_score}.\n"
@@ -190,4 +190,3 @@ The total score is calculated by summing the points for each criterion.
     explanation += f"The patient's PSI score is {psi_score}."
 
     return {"Explanation": explanation, "Answer": psi_score}
-

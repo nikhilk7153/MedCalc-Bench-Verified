@@ -1,5 +1,3 @@
-__author__ = "qiao"
-
 import json
 import contextlib
 import os

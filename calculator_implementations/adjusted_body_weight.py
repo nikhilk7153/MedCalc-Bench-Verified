@@ -26,10 +26,4 @@ def abw_explanation(input_variables):
     return {"Explanation": explanation, "ABW": abw_explanation_string, "Answer": abw}
 
 
-def abw(weight, height, sex):
-    weight = weight_conversion.weight_conversion(weight)
-    ibw = ideal_body_weight.ibw(height, sex)
-    abw = ibw + 0.4 * (weight - ibw)
-    return abw
-
 

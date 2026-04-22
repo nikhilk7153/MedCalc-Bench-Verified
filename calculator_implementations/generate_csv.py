@@ -61,7 +61,7 @@ for index, row in df_test.iterrows():
     else:
 
         question = calc_info[str(calculator_id)]["question"]
-        if str(calculator_id) not in ["43", "28"]:
+        if str(calculator_id) not in ["43", "28", "36"]:
             question = question + " " + "You should use the patient's medical values and health status when they were first admitted to the hospital prior to any treatment."
 
         csv_props["Question"].append(question)

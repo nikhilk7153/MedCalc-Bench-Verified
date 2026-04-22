@@ -21,7 +21,7 @@ def compute_cci_explanation(input_parameters):
 4. Peripheral vascular disease (intermittent claudication, past bypass for chronic arterial insufficiency, history of gangrene or acute arterial insufficiency, untreated thoracic or abdominal aneurysm ≥6 cm): No = 0 points, Yes = +1 point
 5. Cerebrovascular accident (CVA) or transient ischemic attack (TIA): No = 0 points, Yes = +1 point
 6. Dementia (chronic cognitive deficit): No = 0 points, Yes = +1 point
-7. Chronic pulmonary disease (COPD): No = 0 points, Yes = +1 point
+7. Chronic pulmonary disease (CPD): No = 0 points, Yes = +1 point
 8. Connective tissue disease: No = 0 points, Yes = +1 point
 9. Peptic ulcer disease (any history of treatment for ulcer disease or ulcer bleeding): No = 0 points, Yes = +1 point
 10. Liver disease: None = 0 points, Mild = +1 point, Moderate to severe = +3 points

@@ -2,23 +2,11 @@ from math import log10, floor
 
 def round_number(num):
     """
-    Rounds numbers based on their magnitude to preserve appropriate precision:
-    1. For numbers >= 0.0001 (absolute value): rounds to 5 decimal places
-    2. For numbers < 0.0001 (absolute value): preserves 5 significant digits
-    
-    This ensures small numbers like 0.000085 or 0.000015 keep their precision.
-    Works correctly with both positive and negative numbers.
+    Rounds to at least 5 decimal places, but extends further if needed so that
+    5 significant digits are preserved (e.g. 0.000134 stays 0.000134, not 0.00013).
     """
     if num == 0:
         return 0
-        
-    # Get number of significant digits in decimal representation
-    # Using absolute value to handle negative numbers correctly
-    sig_digits = -int(floor(log10(abs(num)))) + 5
-    
-    # For larger numbers (>= 0.0001 in absolute value), cap at 5 decimal places
-    if abs(num) >= 1e-4:
-        return round(num, 5)
-    else:
-        # For smaller numbers, preserve appropriate significant digits
-        return round(num, sig_digits)
+
+    sig_digits_needed = -int(floor(log10(abs(num)))) + 4
+    return round(num, max(5, sig_digits_needed))

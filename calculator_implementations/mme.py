@@ -32,7 +32,7 @@ def mme_explanation(input_parameters):
             "Buprenorphine": 10}
     
 
-    explanation += "\nThe curent Morphine Milligram Equivalents (MME) is 0 MME per day.\n"
+    explanation += "\nThe current Morphine Milligram Equivalents (MME) is 0 MME per day.\n"
     
     mme_equivalent = 0
     

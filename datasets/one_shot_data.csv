@@ -643,7 +643,7 @@ Hence, the number of PERC rule criteria met by the patient is 2."
 10. TraMADol: MME conversion factor = 0.2
 11. Buprenorphine: MME conversion factor = 10
 
-The curent Morphine Milligram Equivalents (MME) is 0 MME per day.
+The current Morphine Milligram Equivalents (MME) is 0 MME per day.
 The patient's dose of OxyMORphone is 10 mg. The patient takes 1 doses/day of OxyMORphone. This means that the patient takes 10 mg/dose OxyMORphone * 1 dose/day = 10 mg/day. To convert to mme/day of OxyMORphone, multiply the 10 mg/day by the mme conversion factor, 3 mme/mg, giving us 30 mme/day. Adding the mme/day of OxyMORphone to the total mme/day gives us 0 + 30 = 30 mme/day.
 The patient's dose of FentaNYL buccal is 20 µg.
 The patient takes 1 doses/day of FentaNYL buccal. This means that the patient takes 20 µg/dose FentaNYL buccal * 1 dose/day = 20 µg/day. To convert to mme/day of FentaNYL buccal, multiply the 20 µg/day by the mme conversion factor, 0.13 mme/µg, giving us 2.6 mme/day. Adding the mme/day of FentaNYL buccal to the total mme/day gives us 30 + 2.6 = 32.6 mme/day.

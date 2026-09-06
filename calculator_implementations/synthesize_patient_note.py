@@ -188,19 +188,21 @@ def mme_conversion():
         
         data[key_name_dose_per_day] = [num_doses, "per day"]
 
+        dose_unit = data[key_name_dose][1]
+
         add_s = 's'
 
         if num_doses == 1:
             add_s = ''
 
         if (num_instances == 2 or num_instances == 3) and i == len(drugs) - 1:
-            note += f"and {num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day."
+            note += f"and {num_amount} {dose_unit} of {drugs[i]} {num_doses} time{add_s} a day."
         elif (num_instances == 1 and i == 0):
-            note += f"{num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day. "
+            note += f"{num_amount} {dose_unit} of {drugs[i]} {num_doses} time{add_s} a day. "
         elif (num_instances == 3):
-            note += f"{num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day, "
+            note += f"{num_amount} {dose_unit} of {drugs[i]} {num_doses} time{add_s} a day, "
         elif (num_instances == 2):
-            note += f"{num_amount} mg of {drugs[i]} {num_doses} time{add_s} a day "
+            note += f"{num_amount} {dose_unit} of {drugs[i]} {num_doses} time{add_s} a day "
 
     return note, data
 

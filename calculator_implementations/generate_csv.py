@@ -128,7 +128,7 @@ for index, row in df_test.iterrows():
         print(row["Ground Truth Answer"], func_output["Answer"])
 
     if row["Category"] in ["lab test", "physical", "dosage"]:
-        csv_props["Ground Truth Answer"].append(str(round_number(float(func_output["Answer"]))))
+        csv_props["Ground Truth Answer"].append(str(float(round_number(float(func_output["Answer"])))))
     else:
         csv_props["Ground Truth Answer"].append(func_output["Answer"])
 
@@ -144,12 +144,12 @@ for index, row in df_test.iterrows():
             print("Lower Limit: ", round_number(answer_value * 1.05))
             print("Upper Limit: ", round_number(answer_value * 0.95))
 
-            csv_props["Lower Limit"].append(str(round_number(answer_value * 1.05)))
-            csv_props["Upper Limit"].append(str(round_number(answer_value * 0.95)))
+            csv_props["Lower Limit"].append(str(float(round_number(answer_value * 1.05))))
+            csv_props["Upper Limit"].append(str(float(round_number(answer_value * 0.95))))
 
         else:
-            csv_props["Lower Limit"].append(str(round_number(answer_value * 0.95)))
-            csv_props["Upper Limit"].append(str(round_number(answer_value * 1.05)))
+            csv_props["Lower Limit"].append(str(float(round_number(answer_value * 0.95))))
+            csv_props["Upper Limit"].append(str(float(round_number(answer_value * 1.05))))
 
 
 
